@@ -37,7 +37,7 @@ export default {
     async updateRecipes() {
       try {
         const response = await this.axios.get(
-          "https://ass3-2.herokuapp.com/users/FamilyRecipePreview"
+          "https://ass3-2.herokuapp.com/users/favoriteRecipes"
         );
 
         console.log(response);

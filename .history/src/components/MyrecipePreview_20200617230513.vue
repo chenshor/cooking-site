@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipePreview">
+  <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="myrecipePreview">
     <b-card
       :title="recipe.title"
       :img-src="recipe.image"
@@ -10,7 +10,7 @@
       class="mb-2"
     >
       <b-card-text>
-        {{ recipe.readyInMinutes }} readyInMinutes
+        <!-- {{ recipe.readyInMinutes }} readyInMinutes
         <br />
         {{ recipe.aggregateLikes }} likes
         <br />
@@ -18,8 +18,8 @@
         <br />
         is vegan: {{ recipe.vegan }}
         <br />
-        is vegetarian:{{ recipe.vegetarian }}
-        <!-- {{recipe}} -->
+        is vegetarian:{{ recipe.vegetarian }}-->
+        {{recipe}}
       </b-card-text>
     </b-card>
   </router-link>

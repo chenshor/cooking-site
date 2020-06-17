@@ -2,7 +2,7 @@
   <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipePreview">
     <b-card
       :title="recipe.title"
-      :img-src="recipe.image"
+      :img-src="recipe.Image"
       img-alt="Image"
       img-top
       tag="article"

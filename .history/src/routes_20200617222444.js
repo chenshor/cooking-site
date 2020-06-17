@@ -5,7 +5,6 @@ import Recipe from "./pages/RecipePage";
 import Register from "./pages/RegisterPage";
 import About from "./pages/AboutPage";
 import FamilyRecipes from "./pages/FamilyRecipesPage";
-import MyRecipesPage from "./pages/MyRecipesPage";
 
 const routes = [
   {
@@ -51,12 +50,7 @@ const routes = [
   {
     path: "/myRecipes",
     name: "myRecipes",
-    component: () => import("./pages/MyRecipesPage"),
-  },
-  {
-    path: "/favorite",
-    name: "favorite",
-    component: () => import("./pages/FavoritePage"),
+    component: () => import("./pages/MyRecipesList"),
   },
 ];
 

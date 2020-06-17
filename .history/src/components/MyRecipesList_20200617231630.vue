@@ -5,19 +5,19 @@
       <slot></slot>
     </h3>
     <b-row>
-      <b-col v-for="r in recipes" :key="r.id">
-        <FamilyRecipePreview class="familyPreview" :recipe="r" />
-      </b-col>
+      <b-row v-for="r in recipes" :key="r.id">
+        <MyRecipePreview class="MyRecipePreview" :recipe="r" />
+      </b-row>
     </b-row>
   </b-container>
 </template>
 
 <script>
-import FamilyRecipePreview from "./FamilyRecipePreview";
+import MyRecipePreview from "./MyRecipePreview";
 export default {
-  name: "FamilyList",
+  name: "MyRecipeList",
   components: {
-    FamilyRecipePreview
+    MyRecipePreview
   },
   props: {
     title: {
@@ -37,12 +37,11 @@ export default {
     async updateRecipes() {
       try {
         const response = await this.axios.get(
-          "https://ass3-2.herokuapp.com/users/FamilyRecipePreview"
+          "https://ass3-2.herokuapp.com/users/myRecipePreview"
         );
 
         console.log(response);
         const recipes = response.data.userRecipeInfo;
-
         this.recipes = [];
         this.recipes.push(...recipes);
         // console.log(this.recipes);

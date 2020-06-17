@@ -1,7 +1,7 @@
 <template>
   <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipePreview">
     <b-card
-      :title="recipe.title"
+      :title="recipe.RecipeName"
       :img-src="recipe.image"
       img-alt="Image"
       img-top
@@ -10,15 +10,17 @@
       class="mb-2"
     >
       <b-card-text>
-        {{ recipe.readyInMinutes }} readyInMinutes
+        servings:{{ recipe.servings }}
         <br />
-        {{ recipe.aggregateLikes }} likes
+        RecipeOwner: {{ recipe.RecipeOwner }}
+        <br />
+        Prepared: {{recipe.Prepared}}
         <br />
         is gluten free: {{ recipe.glutenFree }}
         <br />
         is vegan: {{ recipe.vegan }}
         <br />
-        is vegetarian:{{ recipe.vegetarian }}
+        is vegetarian:{{ recipe.Vegetarian }}
         <!-- {{recipe}} -->
       </b-card-text>
     </b-card>
@@ -41,5 +43,5 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 </style>

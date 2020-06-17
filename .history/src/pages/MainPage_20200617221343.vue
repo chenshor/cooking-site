@@ -32,8 +32,7 @@ import RecipePreviewList from "../components/RecipePreviewList";
 import LastSeen from "../components/LastSeen";
 export default {
   components: {
-    RecipePreviewList,
-    LastSeen
+    RecipePreviewList
   }
 };
 </script>

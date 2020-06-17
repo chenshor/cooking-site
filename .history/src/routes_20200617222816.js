@@ -53,11 +53,6 @@ const routes = [
     name: "myRecipes",
     component: () => import("./pages/MyRecipesPage"),
   },
-  {
-    path: "/favorite",
-    name: "favorite",
-    component: () => import("./pages/FavoritePage"),
-  },
 ];
 
 export default routes;

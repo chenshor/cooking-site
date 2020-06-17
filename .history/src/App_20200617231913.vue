@@ -13,7 +13,6 @@
         {{ $root.store.username }}:
         <router-link to="/FamilyList">Family Recipes</router-link>|
         <router-link to="/myRecipes">My Recipes</router-link>|
-        <router-link to="/favorite">My Favorite</router-link>
         <button @click="Logout">Logout</button>|
       </span>
     </div>

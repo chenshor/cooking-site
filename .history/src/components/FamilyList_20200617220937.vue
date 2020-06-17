@@ -6,18 +6,18 @@
     </h3>
     <b-row>
       <b-col v-for="r in recipes" :key="r.id">
-        <FamilyRecipePreview class="familyPreview" :recipe="r" />
+        <DBPreview class="DBPreview" :recipe="r" />
       </b-col>
     </b-row>
   </b-container>
 </template>
 
 <script>
-import FamilyRecipePreview from "./FamilyRecipePreview";
+import DBPreview from "./DBPreview";
 export default {
   name: "FamilyList",
   components: {
-    FamilyRecipePreview
+    DBPreview
   },
   props: {
     title: {

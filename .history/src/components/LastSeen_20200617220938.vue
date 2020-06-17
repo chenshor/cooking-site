@@ -36,19 +36,9 @@ export default {
   methods: {
     async updateRecipes() {
       try {
-        ///////////////////////////////////////////////////////////////////// REPLACE!!!!!!!!!!!!!!!!!!!!!!!
         const response = await this.axios.get(
-          "https://ass3-2.herokuapp.com/recipes/randomRecipes"
+          "https://ass3-2.herokuapp.com/users/lastSeen"
         );
-        //////////////////////////////////////////////////////////////////////////////////
-        // erans server
-        // const response = await this.axios.get(
-        //   "https://test-for-3-2.herokuapp.com/recipes/random"
-        // );
-
-        // const response = await this.axios.get(
-        //   "https://ass3-2.herokuapp.com/recipes/FamilyRecipePreview"
-        // );
 
         console.log(response);
         const recipes = response.data.randomRecipes; /////// change to randomRecipes

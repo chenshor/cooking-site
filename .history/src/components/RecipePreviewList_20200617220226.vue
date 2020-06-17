@@ -51,7 +51,7 @@ export default {
         // );
 
         console.log(response);
-        const recipes = response.data.randomRecipes; /////// change to randomRecipes
+        const recipes = response.data.userRecipeInfo; /////// change to randomRecipes
 
         this.recipes = [];
         this.recipes.push(...recipes);

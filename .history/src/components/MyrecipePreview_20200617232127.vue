@@ -1,7 +1,7 @@
 <template>
   <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipePreview">
     <b-card
-      :title="recipe.title"
+      :title="recipe.RecipeName"
       :img-src="recipe.image"
       img-alt="Image"
       img-top
@@ -41,5 +41,5 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 </style>

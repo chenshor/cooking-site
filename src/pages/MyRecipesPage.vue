@@ -1,15 +1,15 @@
 <template>
   <div class="container">
     <h1 class="title">Family Recipes</h1>
-    <FamilyList title="Family Recipes" class="family Recipes" />
+    <MyRecipesList title="My Recipes" class="MyRecipes" />
   </div>
 </template>
 
 <script>
-import FamilyList from "../components/FamilyList";
+import MyRecipesList from "../components/MyRecipesList";
 export default {
   components: {
-    FamilyList
+    MyRecipesList
   }
 };
 </script>
