@@ -26,6 +26,11 @@
         >
       </div>
     </div>
+    <!-- <div
+      style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
+    >
+      Centeredasdasdad
+    </div> -->
   </div>
 </template>
 
@@ -52,11 +57,10 @@ export default {
 }
 .grid {
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
+  grid-template-columns: repeat(2);
+  grid-template-rows: repeat(4);
   grid-gap: 3%;
   height: 100%;
-  width: 100%;
 }
 .random {
   grid-row: 2/-1;
@@ -72,10 +76,6 @@ export default {
   grid-row: 2/-1;
   padding-top: 1%;
   overflow: auto;
-  margin-top: 5%;
-}
-.container {
-  width: 100%;
-  height: 100%;
+  margin-top: 5px;
 }
 </style>

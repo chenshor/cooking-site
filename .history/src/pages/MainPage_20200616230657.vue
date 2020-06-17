@@ -26,6 +26,11 @@
         >
       </div>
     </div>
+    <!-- <div
+      style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
+    >
+      Centeredasdasdad
+    </div> -->
   </div>
 </template>
 
@@ -73,9 +78,5 @@ export default {
   padding-top: 1%;
   overflow: auto;
   margin-top: 5%;
-}
-.container {
-  width: 100%;
-  height: 100%;
 }
 </style>

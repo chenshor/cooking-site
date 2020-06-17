@@ -9,6 +9,13 @@
         />
       </div>
       <div class="lastview">
+        <router-link
+          v-if="!$root.store.username"
+          to="/login"
+          tag="button"
+          class="buttonLogin"
+          >You need to Login to vue this</router-link
+        >
         <RecipePreviewList
           title="Last Viewed Recipes"
           :class="{
@@ -20,12 +27,12 @@
         >
         </RecipePreviewList>
       </div>
-      <div class="buttonLogin">
-        <router-link v-if="!$root.store.username" to="/login" tag="button"
-          >You need to Login to vue this</router-link
-        >
-      </div>
     </div>
+    <!-- <div
+      style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
+    >
+      Centeredasdasdad
+    </div> -->
   </div>
 </template>
 
@@ -52,11 +59,10 @@ export default {
 }
 .grid {
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
+  grid-template-columns: repeat(2);
+  grid-template-rows: repeat(4);
   grid-gap: 3%;
   height: 100%;
-  width: 100%;
 }
 .random {
   grid-row: 2/-1;
@@ -70,12 +76,7 @@ export default {
 }
 .buttonLogin {
   grid-row: 2/-1;
-  padding-top: 1%;
+  padding: 1%;
   overflow: auto;
-  margin-top: 5%;
-}
-.container {
-  width: 100%;
-  height: 100%;
 }
 </style>

@@ -11,7 +11,7 @@
       </span>
       <span v-else>
         {{ $root.store.username }}:
-        <router-link to="/FamilyList">Family Recipes</router-link>
+        <router-link to="/users/FamilyList">Family Recipes</router-link>
         <button @click="Logout">Logout</button>|
       </span>
     </div>

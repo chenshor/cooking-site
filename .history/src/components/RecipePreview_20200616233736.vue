@@ -1,5 +1,8 @@
 <template>
-  <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipePreview">
+  <router-link
+    :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
+    class="recipePreview"
+  >
     <b-card class="card">
       <div class="recipe-body">
         <img v-if="image_load" :src="recipe.image" class="recipe-image" />
@@ -21,21 +24,21 @@
 <script>
 export default {
   mounted() {
-    this.axios.get(this.recipe.image).then(i => {
+    this.axios.get(this.recipe.image).then((i) => {
       this.image_load = true;
     });
   },
   data() {
     return {
-      image_load: false
+      image_load: false,
     };
   },
   props: {
     recipe: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>
 

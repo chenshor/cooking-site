@@ -41,7 +41,6 @@ export default {
         //   "https://ass3-2.herokuapp.com/recipes/randomRecipes"
         // );
         //////////////////////////////////////////////////////////////////////////////////
-        // erans server
         // const response = await this.axios.get(
         //   "https://test-for-3-2.herokuapp.com/recipes/random"
         // );
@@ -51,7 +50,7 @@ export default {
         );
 
         console.log(response);
-        const recipes = response.data.userRecipeInfo; /////// change to randomRecipes
+        const recipes = response.data.userRecipeInfo;
 
         this.recipes = [];
         this.recipes.push(...recipes);

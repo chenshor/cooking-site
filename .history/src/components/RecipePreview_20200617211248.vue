@@ -2,7 +2,7 @@
   <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipePreview">
     <b-card class="card">
       <div class="recipe-body">
-        <img v-if="image_load" :src="recipe.image" class="recipe-image" />
+        <!-- <img v-if="image_load" :src="recipe.image" class="recipe-image" /> -->
       </div>
       <div class="recipe-footer">
         <div :title="recipe.title" class="recipe-title">{{ recipe.title }}</div>

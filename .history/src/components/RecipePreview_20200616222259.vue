@@ -1,50 +1,52 @@
 <template>
-  <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipePreview">
-    <b-card class="card">
-      <div class="recipe-body">
-        <img v-if="image_load" :src="recipe.image" class="recipe-image" />
-      </div>
-      <div class="recipe-footer">
-        <div :title="recipe.title" class="recipe-title">{{ recipe.title }}</div>
-        <ul class="recipe-overview">
-          <li>{{ recipe.readyInMinutes }} minutes</li>
-          <li>{{ recipe.aggregateLikes }} likes</li>
-          <li>is gluten free: {{ recipe.glutenFree }}</li>
-          <li>is vegan: {{ recipe.vegan }}</li>
-          <li>is vegetarian:{{ recipe.vegetarian }}</li>
-        </ul>
-      </div>
-    </b-card>
+  <router-link
+    :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
+    class="recipePreview"
+  >
+    <div class="recipe-body">
+      <img v-if="image_load" :src="recipe.image" class="recipe-image" />
+    </div>
+    <div class="recipe-footer">
+      <div :title="recipe.title" class="recipe-title">{{ recipe.title }}</div>
+      <ul class="recipe-overview">
+        <li>{{ recipe.readyInMinutes }} minutes</li>
+        <li>{{ recipe.aggregateLikes }} likes</li>
+        <li>is gluten free: {{ recipe.glutenFree }}</li>
+        <li>is vegan: {{ recipe.vegan }}</li>
+        <li>is vegetarian:{{ recipe.vegetarian }}</li>
+      </ul>
+    </div>
   </router-link>
 </template>
 
 <script>
 export default {
   mounted() {
-    this.axios.get(this.recipe.image).then(i => {
+    this.axios.get(this.recipe.image).then((i) => {
       this.image_load = true;
     });
   },
   data() {
     return {
-      image_load: false
+      image_load: false,
     };
   },
   props: {
     recipe: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>
 
 <style scoped>
 .recipe-preview {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   width: 90%;
   height: 100%;
-  position: relative;
   margin: 10px 10px;
 }
 .recipe-preview > .recipe-body {
@@ -59,7 +61,7 @@ export default {
   margin-top: auto;
   margin-bottom: auto;
   display: block;
-  width: 50%;
+  width: 98%;
   height: auto;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -114,8 +116,4 @@ export default {
   display: table-cell;
   text-align: center;
 }
-/* .recipe-preview .card {
-  width: 100px;
-  height: 100px;
-} */
 </style>

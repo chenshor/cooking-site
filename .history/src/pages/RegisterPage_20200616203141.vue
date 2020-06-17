@@ -119,7 +119,14 @@
       </b-form-group>
 
       <b-form-group id="input-group-image" label-cols-sm="3" label="image:" label-for="image">
-        <input type="file" class="form-control-file" id="exampleFormControlFile1" />
+        <b-form-file
+          v-model="file"
+          :state="Boolean(file)"
+          class="form-control-file"
+          id="exampleFormControlFile1"
+          placeholder="Choose a file or drop it here..."
+          drop-placeholder="Drop file here..."
+        ></b-form-file>
       </b-form-group>
 
       <b-button type="reset" variant="danger">Reset</b-button>
@@ -231,7 +238,7 @@ export default {
         );
         this.$router.push("/login");
         // console.log(response);
-      }  catch (err) {
+      } catch (err) {
         console.log(err.response);
         this.form.submitError = err.response.data.message;
       }

@@ -4,30 +4,30 @@
       {{ title }}:
       <slot></slot>
     </h3>
-    <b-col>
+    <b-row>
       <b-col v-for="r in recipes" :key="r.id">
         <RecipePreview class="recipePreview" :recipe="r" />
       </b-col>
-    </b-col>
+    </b-row>
   </b-container>
 </template>
 
 <script>
 import RecipePreview from "./RecipePreview";
 export default {
-  name: "RecipePreviewList",
+  name: "FamilyList",
   components: {
-    RecipePreview,
+    RecipePreview
   },
   props: {
     title: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
-      recipes: [],
+      recipes: []
     };
   },
   mounted() {
@@ -36,22 +36,13 @@ export default {
   methods: {
     async updateRecipes() {
       try {
-        ///////////////////////////////////////////////////////////////////// REPLACE!!!!!!!!!!!!!!!!!!!!!!!
-        // const response = await this.axios.get(
-        //   "https://ass3-2.herokuapp.com/recipes/randomRecipes"
-        // );
-        //////////////////////////////////////////////////////////////////////////////////
-        // erans server
-        // const response = await this.axios.get(
-        //   "https://test-for-3-2.herokuapp.com/recipes/random"
-        // );
-
         const response = await this.axios.get(
-          "https://ass3-2.herokuapp.com/recipes/FamilyRecipePreview"
+          "https://ass3-2.herokuapp.com/users/FamilyRecipePreview",
+          { withCredentials: true }
         );
 
         console.log(response);
-        const recipes = response.data.userRecipeInfo; /////// change to randomRecipes
+        const recipes = response.data.familyRecipes;
 
         this.recipes = [];
         this.recipes.push(...recipes);
@@ -59,8 +50,8 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
