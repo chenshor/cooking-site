@@ -32,7 +32,7 @@
       {{ recipe }}
     </pre
       >-->
-      {{response}}
+      {{recipe}}
     </div>
   </div>
 </template>
@@ -54,7 +54,6 @@ export default {
         response = await this.axios.get(
           `https://ass3-2.herokuapp.com/recipes/fullRecipe/${id}`
         );
-        console.log(response.data.fullRecipe);
 
         // console.log("response.status", response.status);
         if (response.status !== 200) this.$router.replace("/NotFound");
@@ -72,7 +71,7 @@ export default {
         readyInMinutes,
         image,
         title
-      } = response.data.fullRecipe;
+      } = response.fullRecipe[0];
 
       let _instructions = analyzedInstructions
         .map(fstep => {

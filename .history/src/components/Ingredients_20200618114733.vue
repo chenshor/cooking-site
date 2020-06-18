@@ -1,7 +1,7 @@
 <template>
   <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipePreview">
     <b-card
-      :title="recipe.title"
+      :title="ingredient.title"
       :img-src="recipe.image"
       img-alt="Image"
       img-top
@@ -9,18 +9,7 @@
       style="max-width: 20rem;max-height:auto;"
       class="mb-2"
     >
-      <b-card-text>
-        {{ recipe.readyInMinutes }} readyInMinutes
-        <br />
-        {{ recipe.aggregateLikes }} likes
-        <br />
-        is gluten free: {{ recipe.glutenFree }}
-        <br />
-        is vegan: {{ recipe.vegan }}
-        <br />
-        is vegetarian:{{ recipe.vegetarian }}
-        <!-- {{recipe}} -->
-      </b-card-text>
+      <b-card-text></b-card-text>
     </b-card>
   </router-link>
 </template>
@@ -33,7 +22,7 @@ export default {
     };
   },
   props: {
-    recipe: {
+    ingredient: {
       type: Object,
       required: true
     }
@@ -42,9 +31,4 @@ export default {
 </script>
 
 <style scoped>
-.card-img-top {
-  width: 100%;
-  height: 5vw;
-  object-fit: cover;
-}
 </style>

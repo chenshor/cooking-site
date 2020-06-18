@@ -54,7 +54,7 @@ export default {
         response = await this.axios.get(
           `https://ass3-2.herokuapp.com/recipes/fullRecipe/${id}`
         );
-        console.log(response.data.fullRecipe);
+        console.log(response.data);
 
         // console.log("response.status", response.status);
         if (response.status !== 200) this.$router.replace("/NotFound");

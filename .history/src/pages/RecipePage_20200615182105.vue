@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-if="recipe">
-      <!-- <div class="recipe-header mt-3 mb-4">
+      <div class="recipe-header mt-3 mb-4">
         <h1>{{ recipe.title }}</h1>
         <img :src="recipe.image" class="center" />
       </div>
@@ -26,13 +26,12 @@
             </ol>
           </div>
         </div>
-      </div>-->
+      </div>
       <!-- <pre>
       {{ $route.params }}
       {{ recipe }}
     </pre
       >-->
-      {{response}}
     </div>
   </div>
 </template>
@@ -49,12 +48,14 @@ export default {
     try {
       let response;
       response = this.$route.params.response;
-      let id = this.$route.params.recipeId;
+
       try {
         response = await this.axios.get(
-          `https://ass3-2.herokuapp.com/recipes/fullRecipe/${id}`
+          "https://test-for-3-2.herokuapp.com/recipes/info",
+          {
+            params: { id: this.$route.params.recipeId }
+          }
         );
-        console.log(response.data.fullRecipe);
 
         // console.log("response.status", response.status);
         if (response.status !== 200) this.$router.replace("/NotFound");
@@ -72,7 +73,7 @@ export default {
         readyInMinutes,
         image,
         title
-      } = response.data.fullRecipe;
+      } = response.data.recipe;
 
       let _instructions = analyzedInstructions
         .map(fstep => {

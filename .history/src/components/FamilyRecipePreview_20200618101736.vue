@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'familyRecipe', params: { id: recipe.id } }" class="recipePreview">
+  <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipePreview">
     <b-card
       :title="recipe.RecipeName"
       :img-src="recipe.Image"
@@ -44,9 +44,4 @@ export default {
 </script>
 
 <style>
-.card-img-top {
-  width: 100%;
-  height: 10vw;
-  object-fit: cover;
-}
 </style>

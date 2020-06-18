@@ -44,9 +44,4 @@ export default {
 </script>
 
 <style>
-.card-img-top {
-  width: 100%;
-  height: 10vw;
-  object-fit: cover;
-}
 </style>

@@ -37,7 +37,7 @@ const routes = [
     path: "/familyRecipe/:id",
     name: "familyRecipe",
     component: () => import("./pages/FullFamilyRecipePage"),
-  },
+  }
   {
     path: "/register",
     name: "register",
