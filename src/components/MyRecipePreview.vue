@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipePreview">
+  <router-link :to="{ name: 'myRecipe', params: { id: recipe.id } }" class="recipePreview">
     <b-card
       :title="recipe.title"
       :img-src="recipe.image"

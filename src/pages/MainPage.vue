@@ -1,12 +1,19 @@
 <template>
-  <div class="container">
-    <h1 class="title">Main Page</h1>
-    <div class="grid">
-      <div class="random">
-        <RecipePreviewList title="Randome Recipes" class="RandomRecipes center" />
-      </div>
-      <div class="lastview">
-        <LastSeen
+<div>
+<b-container class="container">
+    <b-row >
+      <b-col class="text-center">
+        <h1 class="title">Main Page</h1>
+      </b-col>
+    </b-row>
+  <b-row align-v="stretch">  
+    <b-col>
+      <RecipePreviewList title="Randome Recipes" class="RandomRecipes center" />
+    </b-col>
+    <b-col>
+      <b-row>
+      <b-col cols="8">
+          <LastSeen
           title="Last Viewed Recipes"
           :class="{
             RandomRecipes: true,
@@ -15,16 +22,17 @@
           }"
           disabled
         ></LastSeen>
-      </div>
-      <div class="buttonLogin">
-        <router-link
-          v-if="!$root.store.username"
-          to="/login"
-          tag="button"
-        >You need to Login to vue this</router-link>
-      </div>
-    </div>
-  </div>
+      </b-col>
+      <b-col>
+        <b-button squared v-if="!$root.store.username" to="/login" variant="info" >You need to Login to vue this
+        </b-button>
+      </b-col>
+      </b-row>
+    </b-col>
+  </b-row>
+</b-container>
+</div>
+
 </template>
 
 <script>
@@ -50,32 +58,32 @@ export default {
   pointer-events: none;
   cursor: default;
 }
-.grid {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  grid-gap: 3%;
-  height: 100%;
-  width: 100%;
-}
-.random {
-  grid-row: 2/-1;
-  padding: 1%;
-  overflow: auto;
-}
-.lastview {
-  grid-row: 2/-1;
-  padding: 1%;
-  overflow: auto;
-}
-.buttonLogin {
-  grid-row: 2/-1;
-  padding-top: 1%;
-  overflow: auto;
-  margin-top: 5%;
-}
-.container {
-  width: 100%;
-  height: 100%;
-}
+// .grid {
+//   display: grid;
+//   grid-template-columns: auto;
+//   grid-template-rows: auto;
+//   grid-gap: 3%;
+//   height: 100%;
+//   width: 100%;
+// }
+// .random {
+//   grid-row: 2/-1;
+//   padding: 1%;
+//   overflow: auto;
+// }
+// .lastview {
+//   grid-row: 2/-1;
+//   padding: 1%;
+//   overflow: auto;
+// }
+// .buttonLogin {
+//   grid-row: 2/-1;
+//   padding-top: 1%;
+//   overflow: auto;
+//   margin-top: 5%;
+// }
+// .container {
+//   width: 100%;
+//   height: 100%;
+// }
 </style>
