@@ -108,7 +108,7 @@ export default {
 
 <style scoped>
 .foodImg {
-  width: 70%;
+  width: 100%;
   height: auto;
 }
 .container {

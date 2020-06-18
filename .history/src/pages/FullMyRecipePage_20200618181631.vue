@@ -1,43 +1,34 @@
 <template>
-  <b-container>
-    <b-row class="text-center" align-v="stretch">
-      <b-col class="title">
-        <h5>{{recipe.title}}</h5>
-      </b-col>
-    </b-row>
-    <b-row align-v="stretch">
-      <b-col class="Image">
-        <b-img class="foodImg" :src="recipe.Image" fluid alt="Responsive image" center></b-img>
-      </b-col>
-    </b-row>
-    <b-row>
+
+<b-container >
+  <b-row class="text-center" align-v="stretch">
+    <b-col class="title">
+      <h5>{{recipe.title}}</h5>
+    </b-col>
+  </b-row>
+  <b-row align-v="stretch" >
+    <b-col class="Image">
+      <b-img class="foodImg" :src="recipe.Image" fluid alt="Responsive image" center></b-img>
+    </b-col>
+  </b-row>
+    <b-row >
       <b-col class="text-center">
         <h1>{{ recipe.RecipeName }}</h1>
       </b-col>
     </b-row>
     <b-row>
-      <div v-for="i in recipe.Ingredients" :key="i.name">
-        <b-col align-h="end">
-          <Ingredients class="Ingredients" :ingredient="i" />
-        </b-col>
-      </div>
-      <br />
+     
+    <div v-for="i in recipe.Ingredients" :key="i.name">
+    <b-col align-h="end">
+        <Ingredients class="Ingredients" :ingredient="i" />
+    </b-col> 
+    </div>
+   
     </b-row>
-    Time: {{recipe.readyInMinutes}}
-    <br />
-    Likes: {{recipe.aggregateLikes}}
-    <br />
-    Servings: {{recipe.servings}}
-    <br />
-    Is Vegan: {{recipe.vegan}}
-    <br />
-    Is Vegetarian: {{recipe.Vegetarian}}
-    <br />
-    Is Gluten Free: {{recipe.glutenFree}}
-    <br />Instructions:
-    <br />
-    {{recipe.Instructions}}
-  </b-container>
+
+</b-container>
+
+
 </template>
 
 <script>
@@ -86,7 +77,7 @@ export default {
       } = response.data.userRecipeInfo[0];
 
       let _recipe = {
-        Ingredients,
+       Ingredients,
         instructions,
         aggregateLikes,
         title,
@@ -107,18 +98,22 @@ export default {
 </script>
 
 <style scoped>
-.foodImg {
-  width: 70%;
-  height: auto;
+.foodImg{
+  width: 100%;
+    height: auto;
+
 }
-.container {
+.container{
   max-width: 100%;
 }
-.title {
-  height: 100px;
+.title{
+  height: 100px; 
   background-color: yellow;
+  
 }
-.h5 {
+.h5{
   font-size: 1000px;
 }
+
+
 </style>

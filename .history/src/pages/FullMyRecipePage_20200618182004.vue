@@ -22,21 +22,22 @@
         </b-col>
       </div>
       <br />
+      Time: {{recipe.readyInMinutes}}
+      <br />
+      Likes: {{recipe.aggregateLikes}}
+      <br />
+      Servings: {{recipe.servings}}
+      <br />
+      Is Vegan: {{recipe.vegan}}
+      <br />
+      Is Vegetarian: {{recipe.Vegetarian}}
+      <br />
+      Is Gluten Free: {{recipe.glutenFree}}
+      <br />Instructions:
+      <br />
+
+      {{recipe.Instuctions}}
     </b-row>
-    Time: {{recipe.readyInMinutes}}
-    <br />
-    Likes: {{recipe.aggregateLikes}}
-    <br />
-    Servings: {{recipe.servings}}
-    <br />
-    Is Vegan: {{recipe.vegan}}
-    <br />
-    Is Vegetarian: {{recipe.Vegetarian}}
-    <br />
-    Is Gluten Free: {{recipe.glutenFree}}
-    <br />Instructions:
-    <br />
-    {{recipe.Instructions}}
   </b-container>
 </template>
 
@@ -108,7 +109,7 @@ export default {
 
 <style scoped>
 .foodImg {
-  width: 70%;
+  width: 100%;
   height: auto;
 }
 .container {

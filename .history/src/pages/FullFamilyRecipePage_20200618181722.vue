@@ -11,21 +11,6 @@
             <Ingredients class="Ingredients" :ingredient="i" />
           </b-col>
         </b-row>
-        <br />
-        Recipe Owner: {{recipe.RecipeOwner}}
-        <br />
-        Prepared at {{recipe.Prepared}}
-        <br />
-        Servings: {{recipe.servings}}
-        <br />
-        Is Vegan: {{recipe.vegan}}
-        <br />
-        Is Vegetarian: {{recipe.Vegetarian}}
-        <br />
-        Is Gluten Free: {{recipe.glutenFree}}
-        <br />Instructions:
-        <br />
-        {{recipe.Instuctions}}
       </div>
     </div>
   </div>
