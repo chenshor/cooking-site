@@ -26,7 +26,10 @@ import {
   ToastPlugin,
   LayoutPlugin,
   ImagePlugin,
-  TabsPlugin
+  TabsPlugin,
+  FormCheckboxPlugin,
+  FormRadioPlugin,
+  FormTagsPlugin
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
@@ -40,7 +43,10 @@ import {
   ToastPlugin,
   LayoutPlugin,
   ImagePlugin,
-  TabsPlugin
+  TabsPlugin,
+  FormCheckboxPlugin,
+  FormRadioPlugin,
+  FormTagsPlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 

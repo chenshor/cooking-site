@@ -4,11 +4,20 @@
       {{ title }}:
       <slot></slot>
     </h3>
-    <b-col>
+    <b-row>
+      <div v-if="this.lastSeen">
       <b-col v-for="r in recipes" :key="r.id">
-        <RecipePreview class="recipePreview" :recipe="r" />
+        <RecipePreview class="recipePreview" :recipe="r" /> 
       </b-col>
-    </b-col>
+      </div>
+      <div v-else>
+        <b-col >
+          <h3>
+            You havn't seen any recipes yet!!!
+          </h3>
+        </b-col>
+      </div>
+    </b-row>
   </b-container>
 </template>
 
@@ -27,7 +36,8 @@ export default {
   },
   data() {
     return {
-      recipes: []
+      recipes: [],
+      lastSeen: Boolean
     };
   },
   mounted() {
@@ -42,12 +52,14 @@ export default {
 
         console.log(response);
         const recipes = response.data.randomRecipes; /////// change to randomRecipes
+        this.lastSeen = true;
+
 
         this.recipes = [];
         this.recipes.push(...recipes);
-        // console.log(this.recipes);
       } catch (error) {
         console.log(error);
+        this.lastSeen = false;
       }
     }
   }

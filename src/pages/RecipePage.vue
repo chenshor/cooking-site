@@ -72,7 +72,7 @@ export default {
         readyInMinutes,
         image,
         title
-      } = response.data.fullRecipe;
+      } = response.data.fullRecipe[0];
 
       let _instructions = analyzedInstructions
         .map(fstep => {
