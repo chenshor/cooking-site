@@ -1,9 +1,6 @@
 <template>
   <b-card
     :sub-title="ingredient.name"
-    :img-src="ingredient.image"
-    img-alt="Image"
-    img-top
     tag="article"
     style="max-width: 11rem; max-height: 12rem"
     align="center"

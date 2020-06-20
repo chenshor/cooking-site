@@ -70,12 +70,12 @@ export default {
         );
 
         console.log($root.store.username);
-        if ($root.store.username) {
-          console.log("!!!!!!!!!!");
-          seen = await this.axios.post(
-            `https://ass3-2.herokuapp.com/users/recipeInfo/seen/${id}`
-          );
-        }
+        // if ($root.store.username) {
+        console.log("!!!!!!!!!!");
+        seen = await this.axios.post(
+          `https://ass3-2.herokuapp.com/users/recipeInfo/seen/${id}`
+        );
+        // }
 
         // console.log("response.status", response.status);
         if (response.status !== 200) this.$router.replace("/NotFound");

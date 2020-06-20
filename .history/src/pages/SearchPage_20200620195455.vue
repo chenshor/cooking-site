@@ -196,14 +196,24 @@ export default {
         console.log(err.response + "error");
       }
     },
-    sortArrays(event) {
-      console.log(this.recipes);
-      // this.recipes = orderBy(this.recipes, this.sort, "asc");
-      this.recipes.sort((a, b) => {
-        a[this.sort] < b[this.sort];
-      });
-    }
+    // sortArrays(event) {
+    //   console.log("!!!!!!!!!!!!!!");
+    //   this.recipes.orderBy(this.sort, "asc");
+    // }
   },
+  computed: {
+  sortArray: function() {
+    function compare(a, b) {
+      if (a.readyInMinutes < b.readyInMinutes)
+        return -1;
+      if (a.readyInMinutes > b.readyInMinutes)
+        return 1;
+      return 0;
+    }
+
+    this.recipes.sort(compare);
+  }
+}
 
   mounted() {
     this.cuisine.push(...cuisine);

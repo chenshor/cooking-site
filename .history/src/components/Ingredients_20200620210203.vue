@@ -1,7 +1,7 @@
 <template>
   <b-card
     :sub-title="ingredient.name"
-    :img-src="ingredient.image"
+    :img-src="ingredient.Image"
     img-alt="Image"
     img-top
     tag="article"

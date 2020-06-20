@@ -197,11 +197,8 @@ export default {
       }
     },
     sortArrays(event) {
-      console.log(this.recipes);
-      // this.recipes = orderBy(this.recipes, this.sort, "asc");
-      this.recipes.sort((a, b) => {
-        a[this.sort] < b[this.sort];
-      });
+      console.log("!!!!!!!!!!!!!!");
+      this.recipes.orderBy(this.sort, "asc");
     }
   },
 

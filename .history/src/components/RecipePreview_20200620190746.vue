@@ -6,17 +6,19 @@
       img-alt="Image"
       img-top
       tag="article"
-      style="max-width: 20rem; max-height: 30rem"
+      style="max-width: 20rem;max-height:25rem;"
       class="mb-2"
     >
       <b-card-text>
-        <b-col>
-          <b-row>{{ recipe.readyInMinutes }} readyInMinutes</b-row>
-          <b-row>{{ recipe.aggregateLikes }} likes</b-row>
-          <b-row>is gluten free: {{ recipe.glutenFree }}</b-row>
-          <b-row>is vegan: {{ recipe.vegan }}</b-row>
-          <b-row>is vegetarian:{{ recipe.vegetarian }}</b-row>
-        </b-col>
+        {{ recipe.readyInMinutes }} readyInMinutes
+        <br />
+        {{ recipe.aggregateLikes }} likes
+        <br />
+        is gluten free: {{ recipe.glutenFree }}
+        <br />
+        is vegan: {{ recipe.vegan }}
+        <br />
+        is vegetarian:{{ recipe.vegetarian }}
         <!-- {{recipe}} -->
       </b-card-text>
     </b-card>

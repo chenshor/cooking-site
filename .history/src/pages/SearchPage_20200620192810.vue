@@ -109,19 +109,9 @@
           <b-button type="submit" variant="primary" style="width:250px;" class="ml-5 w-75">Search</b-button>
         </b-form>
         <b-row v-if="recipes.length>0">
-          <b-form-group label="Sort by:" v-model="sort">
-            <b-form-radio
-              v-on:change="sortArrays"
-              v-model="sort"
-              name="some-radios"
-              value="aggregateLikes"
-            >Likes</b-form-radio>
-            <b-form-radio
-              v-on:change="sortArrays"
-              v-model="sort"
-              name="some-radios"
-              value="readyInMinutes"
-            >Time</b-form-radio>
+          <b-form-group label="Sort by:">
+            <b-form-radio v-model="sort" name="some-radios" value="aggregateLikes">Likes</b-form-radio>
+            <b-form-radio v-model="sort" name="some-radios" value="readyInMinutes">Time</b-form-radio>
           </b-form-group>
         </b-row>
       </b-col>
@@ -196,12 +186,8 @@ export default {
         console.log(err.response + "error");
       }
     },
-    sortArrays(event) {
-      console.log(this.recipes);
-      // this.recipes = orderBy(this.recipes, this.sort, "asc");
-      this.recipes.sort((a, b) => {
-        a[this.sort] < b[this.sort];
-      });
+    sortArrays() {
+      this.recipes.orderBy(this.sort, "asc");
     }
   },
 

@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import Ingredients from "../components/IngredientSpoon";
+import Ingredients from "../components/Ingredients";
 export default {
   name: "recipe",
   components: {
@@ -56,7 +56,6 @@ export default {
   async created() {
     try {
       let response;
-      let seen;
       // response = this.$route.params.response;
       let id = this.$route.params.recipeId;
       let responseIng;
@@ -69,13 +68,7 @@ export default {
           `https://ass3-2.herokuapp.com/recipes/ingredients/${id}`
         );
 
-        console.log($root.store.username);
-        if ($root.store.username) {
-          console.log("!!!!!!!!!!");
-          seen = await this.axios.post(
-            `https://ass3-2.herokuapp.com/users/recipeInfo/seen/${id}`
-          );
-        }
+        console.log(responseIng.data.ingredients.ingredients);
 
         // console.log("response.status", response.status);
         if (response.status !== 200) this.$router.replace("/NotFound");

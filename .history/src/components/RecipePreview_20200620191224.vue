@@ -10,13 +10,13 @@
       class="mb-2"
     >
       <b-card-text>
-        <b-col>
-          <b-row>{{ recipe.readyInMinutes }} readyInMinutes</b-row>
-          <b-row>{{ recipe.aggregateLikes }} likes</b-row>
-          <b-row>is gluten free: {{ recipe.glutenFree }}</b-row>
-          <b-row>is vegan: {{ recipe.vegan }}</b-row>
-          <b-row>is vegetarian:{{ recipe.vegetarian }}</b-row>
-        </b-col>
+        <b-row>
+          <b-col>{{ recipe.readyInMinutes }} readyInMinutes</b-col>
+          <b-col>{{ recipe.aggregateLikes }} likes</b-col>
+          <b-col>is gluten free: {{ recipe.glutenFree }}</b-col>
+          <b-col>is vegan: {{ recipe.vegan }}</b-col>
+          <b-col>is vegetarian:{{ recipe.vegetarian }}</b-col>
+        </b-row>
         <!-- {{recipe}} -->
       </b-card-text>
     </b-card>

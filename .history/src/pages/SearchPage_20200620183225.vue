@@ -1,7 +1,7 @@
 <template>
-  <b-container class="container">
+  <b-container>
     <b-row>
-      <b-col>
+      <b-col class="container">
         <h1 class="titleS">Search</h1>
       </b-col>
     </b-row>
@@ -108,30 +108,12 @@
           </b-form-group>
           <b-button type="submit" variant="primary" style="width:250px;" class="ml-5 w-75">Search</b-button>
         </b-form>
-        <b-row v-if="recipes.length>0">
-          <b-form-group label="Sort by:" v-model="sort">
-            <b-form-radio
-              v-on:change="sortArrays"
-              v-model="sort"
-              name="some-radios"
-              value="aggregateLikes"
-            >Likes</b-form-radio>
-            <b-form-radio
-              v-on:change="sortArrays"
-              v-model="sort"
-              name="some-radios"
-              value="readyInMinutes"
-            >Time</b-form-radio>
-          </b-form-group>
-        </b-row>
       </b-col>
     </b-row>
-    <b-row class="recipesSearch">
-      <div v-for="r in recipes" :key="r.id">
-        <b-col>
-          <RecipePreview class="recipePreview" :recipe="r" />
-        </b-col>
-      </div>
+    <b-row>
+      <b-col v-for="r in recipes" :key="r.id">
+        <RecipePreview class="recipePreview" :recipe="r" />
+      </b-col>
     </b-row>
   </b-container>
 </template>
@@ -157,7 +139,6 @@ export default {
       search: "",
       valueIntolerance: [],
       errors: [],
-      sort: "",
 
       selected: "5", // Must be an array reference!
       options: [
@@ -195,13 +176,6 @@ export default {
       } catch (err) {
         console.log(err.response + "error");
       }
-    },
-    sortArrays(event) {
-      console.log(this.recipes);
-      // this.recipes = orderBy(this.recipes, this.sort, "asc");
-      this.recipes.sort((a, b) => {
-        a[this.sort] < b[this.sort];
-      });
     }
   },
 
@@ -211,14 +185,11 @@ export default {
     this.intolerance.push(...intolerance);
     console.log(this.recipes.length);
     if (sessionStorage.recipes) {
-      this.recipes = JSON.parse(sessionStorage.getItem("recipes"));
+      this.recipes = JSON.parse(localStorage.getItem("recipes"));
     }
   }
 };
 </script>
 
 <style>
-.container {
-  width: 100%;
-}
 </style>

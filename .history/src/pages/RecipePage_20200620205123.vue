@@ -20,11 +20,11 @@
       <b-col>Likes: {{recipe.aggregateLikes}}</b-col>
       <b-col>Servings: {{recipe.servings}}</b-col>
       <b-col>Is Vegan: {{recipe.vegan}}</b-col>
-      <b-col>Is Vegetarian: {{recipe.vegetarian}}</b-col>
+      <b-col>Is Vegetarian: {{recipe.Vegetarian}}</b-col>
       <b-col>Is Gluten Free: {{recipe.glutenFree}}</b-col>
     </b-row>
     <b-row class="ingredentsBox">
-      <div v-for="i in this.ingredients" :key="i.name">
+      <div v-for="i in ingredients" :key="i.name">
         <b-col>
           <Ingredients class="Ingredients" :ingredient="i" />
         </b-col>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import Ingredients from "../components/IngredientSpoon";
+import Ingredients from "../components/Ingredients";
 export default {
   name: "recipe",
   components: {
@@ -56,7 +56,6 @@ export default {
   async created() {
     try {
       let response;
-      let seen;
       // response = this.$route.params.response;
       let id = this.$route.params.recipeId;
       let responseIng;
@@ -69,13 +68,7 @@ export default {
           `https://ass3-2.herokuapp.com/recipes/ingredients/${id}`
         );
 
-        console.log($root.store.username);
-        if ($root.store.username) {
-          console.log("!!!!!!!!!!");
-          seen = await this.axios.post(
-            `https://ass3-2.herokuapp.com/users/recipeInfo/seen/${id}`
-          );
-        }
+        console.log(responseIng.data.ingredients.ingredients);
 
         // console.log("response.status", response.status);
         if (response.status !== 200) this.$router.replace("/NotFound");
@@ -90,10 +83,6 @@ export default {
         aggregateLikes,
         readyInMinutes,
         image,
-        vegan,
-        vegetarian,
-        glutenFree,
-        servings,
         title
       } = response.data.fullRecipe[0];
 
@@ -102,10 +91,6 @@ export default {
         aggregateLikes,
         readyInMinutes,
         image,
-        vegan,
-        vegetarian,
-        glutenFree,
-        servings,
         title
       };
       this.ingredients = responseIng.data.ingredients.ingredients;
