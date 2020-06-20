@@ -15,28 +15,41 @@
         <h1>{{ recipe.RecipeName }}</h1>
       </b-col>
     </b-row>
-    <b-row>
+        <b-row>
+      <b-col>
+        Time: {{recipe.readyInMinutes}}
+      </b-col>
+      <b-col>
+        Likes: {{recipe.aggregateLikes}}
+      </b-col>
+      <b-col>
+        Servings: {{recipe.servings}}
+      </b-col>
+      <b-col>
+        Is Vegan: {{recipe.vegan}}
+      </b-col>
+      <b-col>
+        Is Vegetarian: {{recipe.Vegetarian}}
+      </b-col>
+      <b-col>
+        Is Gluten Free: {{recipe.glutenFree}}
+      </b-col>
+    </b-row>
+    <b-row class="ingredentsBox">
       <div v-for="i in recipe.Ingredients" :key="i.name">
-        <b-col align-h="end">
+        <b-col>
           <Ingredients class="Ingredients" :ingredient="i" />
         </b-col>
       </div>
-      <br />
-    </b-row>
-    Time: {{recipe.readyInMinutes}}
-    <br />
-    Likes: {{recipe.aggregateLikes}}
-    <br />
-    Servings: {{recipe.servings}}
-    <br />
-    Is Vegan: {{recipe.vegan}}
-    <br />
-    Is Vegetarian: {{recipe.Vegetarian}}
-    <br />
-    Is Gluten Free: {{recipe.glutenFree}}
-    <br />Instructions:
-    <br />
-    {{recipe.Instructions}}
+
+   <b-row>
+       <b-col >
+       instructions:
+       {{recipe.instructions}}
+     </b-col>
+     </b-row>
+    
+   </b-row>    
   </b-container>
 </template>
 
@@ -118,7 +131,11 @@ export default {
   height: 100px;
   background-color: yellow;
 }
-.h5 {
-  font-size: 1000px;
+.ingredentsBox{
+  width: 70%;
+  margin-left:0;
+  /* padding: 50px;
+  margin: 20px; */
+  
 }
 </style>
