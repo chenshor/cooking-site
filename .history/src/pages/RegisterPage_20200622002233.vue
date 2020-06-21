@@ -172,7 +172,6 @@ export default {
         submitError: undefined,
         image: ""
       },
-
       countries: [{ value: null, text: "", disabled: true }],
       errors: [],
       validated: false
@@ -200,8 +199,9 @@ export default {
         required,
         length: p => minLength(5)(p) && maxLength(10)(p),
         goodPassword: password =>
+          (/[a-z]/.test(password) || /[A-Z]/.test(password)) &&
           /[0-9]/.test(password) &&
-          /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)
+          /^[a-zA-Z]+$/.test(password)
       },
       confirmedPassword: {
         required,
