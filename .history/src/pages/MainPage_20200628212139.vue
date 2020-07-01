@@ -66,7 +66,7 @@ export default {
   width: 100%;
   height: 100%;
 }
-/* // .grid {
+// .grid {
 //   display: grid;
 //   grid-template-columns: auto;
 //   grid-template-rows: auto;
@@ -89,7 +89,7 @@ export default {
 //   padding-top: 1%;
 //   overflow: auto;
 //   margin-top: 5%;
-// } */
+// }
 .container {
   width: 100%;
   height: 100%;

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" type="dark" variant="info" class="nav">
+    <b-navbar toggleable="lg" type="dark" variant="info">
       <logo></logo>
       <b-navbar-brand to="/">Forkoolar</b-navbar-brand>
 
@@ -75,9 +75,6 @@ export default {
   width: 100%;
   height: 100%;
   background-image: url("./assets/background2.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 #nav {
@@ -91,9 +88,5 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
-
-.nav {
-  background-color: #a52a2a;
 }
 </style>

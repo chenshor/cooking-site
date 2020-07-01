@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="title">Family Recipes</h1>
-    <FamilyList title="Family Recipes" />
+    <FamilyList title="Family Recipes" class="family Recipes" />
   </div>
 </template>
 
@@ -14,12 +14,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped >
-.container {
+<style>
+#container {
   width: 100%;
-  height: 100%;
-}
-.title {
-  color: #e43d3d;
 }
 </style>

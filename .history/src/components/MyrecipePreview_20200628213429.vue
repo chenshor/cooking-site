@@ -6,10 +6,10 @@
       img-alt="Image"
       img-top
       tag="article"
-      style="max-width: 20rem;max-height:auto;"
-      class="mb-4"
+      style="max-width: 20rem;max-height:70rem;"
+      class="col-sm-20 col-lg-26"
     >
-      <b-card-text class="card h-100">
+      <b-card-text>
         {{ recipe.readyInMinutes }} readyInMinutes
         <br />
         {{ recipe.aggregateLikes }} likes

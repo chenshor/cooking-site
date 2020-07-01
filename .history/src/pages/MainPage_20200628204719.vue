@@ -6,7 +6,7 @@
           <h1 class="title">Main Page</h1>
         </b-col>
       </b-row>
-      <b-row align-v="stretch" class="mainRow">
+      <b-row align-v="stretch" class="mainRow" style="width:100%">
         <b-col>
           <RecipePreviewList title="Randome Recipes" class="RandomRecipes center" />
         </b-col>
@@ -49,7 +49,7 @@ export default {
 };
 </script>
 
-<style >
+<style lang="scss" scoped>
 .RandomRecipes {
   margin: 10px 0 10px;
 }
@@ -62,11 +62,7 @@ export default {
   cursor: default;
 }
 
-.mainRow {
-  width: 100%;
-  height: 100%;
-}
-/* // .grid {
+// .grid {
 //   display: grid;
 //   grid-template-columns: auto;
 //   grid-template-rows: auto;
@@ -89,9 +85,9 @@ export default {
 //   padding-top: 1%;
 //   overflow: auto;
 //   margin-top: 5%;
-// } */
-.container {
-  width: 100%;
-  height: 100%;
-}
+// }
+// .container {
+//   width: 100%;
+//   height: 100%;
+// }
 </style>

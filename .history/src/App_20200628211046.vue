@@ -94,6 +94,6 @@ export default {
 }
 
 .nav {
-  background-color: #a52a2a;
+  background: #a52a2a;
 }
 </style>

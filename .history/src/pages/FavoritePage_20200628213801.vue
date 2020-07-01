@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style>
-.title {
-  color: #e43d3d;
+h1 {
+  color: #a52a2a;
 }
 </style>

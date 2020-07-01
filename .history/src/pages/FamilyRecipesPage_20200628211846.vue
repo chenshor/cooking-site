@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title">Family Recipes</h1>
+    <h1>Family Recipes</h1>
     <FamilyList title="Family Recipes" />
   </div>
 </template>
@@ -18,8 +18,5 @@ export default {
 .container {
   width: 100%;
   height: 100%;
-}
-.title {
-  color: #e43d3d;
 }
 </style>

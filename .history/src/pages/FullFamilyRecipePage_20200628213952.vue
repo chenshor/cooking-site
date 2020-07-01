@@ -2,7 +2,7 @@
   <div class="container" v-if="recipe">
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
-        <h1 id="title">{{ recipe.RecipeName }}</h1>
+        <h1 class="title">{{ recipe.RecipeName }}</h1>
         <img :src="recipe.image" class="center" />
       </div>
       <div class="recipe-body">
@@ -109,7 +109,7 @@ export default {
   margin-right: auto;
   width: 50%;
 }
-#title {
+.title {
   color: #e43d3d;
 }
 /* .recipe-header{

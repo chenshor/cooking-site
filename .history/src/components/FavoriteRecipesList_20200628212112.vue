@@ -53,6 +53,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   width: 100%;
+  height: 100%;
 }
 .card-img-top {
   width: 100%;
