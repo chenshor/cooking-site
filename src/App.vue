@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" type="dark" variant="info" class="nav">
-      <logo></logo>
-      <b-navbar-brand to="/">Forkoolar</b-navbar-brand>
-
+    <b-navbar position: sticky toggleable="lg" type="dark" class="nav">
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
@@ -12,33 +9,41 @@
           <b-nav-item to="/about">About</b-nav-item>
         </b-navbar-nav>
 
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
+      <b-navbar-brand 
+      class="ml-auto mb-0"
+       tag="h1" 
+       to="/">
+      <logo></logo>Forkoolar   
+      </b-navbar-brand>
+
+        <b-navbar-nav class="ml-auto mb-2">
           <b-navbar-nav v-if="!$root.store.username">
-            <b-nav-text>Hello Guest:</b-nav-text>
+            <b-nav-text>
+            Hello Guest:
+            </b-nav-text> 
             <b-nav-item to="/register">Register</b-nav-item>
             <b-nav-item to="/login">Login</b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav v-else>
-            <b-nav-item-dropdown text="Personal">
-              <b-dropdown-item to="/FamilyList">Family Recipes</b-dropdown-item>
+               <b-nav-item-dropdown right>
+              <template v-slot:button-content>
+                <b-avatar variant="dark" size="sm"></b-avatar>
+                <em> {{ $root.store.username }}</em>
+                
+              </template>
               <b-dropdown-item to="/myRecipes">My Recipes</b-dropdown-item>
               <b-dropdown-item to="/favorite">My Favorite</b-dropdown-item>
+              <b-dropdown-item to="/FamilyList">Family Recipes</b-dropdown-item>
+              <b-dropdown-item @click="Logout">Log Out</b-dropdown-item>
             </b-nav-item-dropdown>
 
-            <b-nav-item-dropdown right>
-              <!-- Using 'button-content' slot -->
-              <template v-slot:button-content>
-                <em>{{ $root.store.username }}</em>
-              </template>
-              <b-dropdown-item @click="Logout">Sign Out</b-dropdown-item>
-            </b-nav-item-dropdown>
           </b-navbar-nav>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-
+    <div class="page">
     <router-view />
+    </div>
   </div>
 </template>
 
@@ -66,27 +71,36 @@ export default {
 </script>
 
 <style lang="scss">
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  min-height: 100vh;
   width: 100%;
   height: 100%;
-  background-image: url("./assets/background2.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  
+
 }
+ .page{
+   background-image: url("https://res.cloudinary.com/di0zdzniy/image/upload/v1593699232/back2_jrhibg.png");
+  background-repeat: inherit;
+  background-size: cover;
+  width: 100%;
+  min-height: 100%;
+background-color: black;
+ }
 
 #nav {
   padding: 30px;
+
 }
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
 }
 
 #nav a.router-link-exact-active {
@@ -95,5 +109,13 @@ export default {
 
 .nav {
   background-color: #a52a2a;
+   top: 0;
+   height: 60px;
 }
+#home{
+  text-align: center;
+}
+
+
+
 </style>

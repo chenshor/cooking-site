@@ -1,21 +1,21 @@
 <template>
   <b-container>
     <b-row>
-      <b-col>
-        <b-icon v-if="isFavorite" icon="heart-fill" class="h3 mb-2"></b-icon>
+      <span class="hears" >
+        <b-icon v-if="isFavorite" icon="heart-fill" class="h5 mb-2"></b-icon>
         <b-icon
           id="favorite"
-          class="h3 mb-2 hvr-grow"
+          class="h5 mb-2 hvr-grow"
           v-else
           icon="heart"
           style="cursor: pointer;"
           v-on:click="addToFavorite"
         ></b-icon>
-      </b-col>
-      <b-col>
-        <b-icon v-if="isSeen" icon="eye-fill" class="h2 mb-2"></b-icon>
-        <b-icon v-else icon="eye-slash" class="h2 mb-2"></b-icon>
-      </b-col>
+      </span>
+      <span class="indication">
+        <b-icon  v-if="isSeen" icon="eye-fill" class="h5 mb-2"></b-icon>
+        <b-icon v-else icon="eye-slash" class="h5 mb-2 "></b-icon>
+      </span>
     </b-row>
   </b-container>
 </template>
@@ -70,4 +70,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.indication{
+  border: none;
+  border-left: 1px solid rgb(179, 178, 178);
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 1.5em;
+}
+.hears{
+  padding-right: 5px;
+}
+</style>

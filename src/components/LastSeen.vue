@@ -4,7 +4,7 @@
       {{ title }}:
       <slot></slot>
     </h3>
-    <b-row>
+    <b-row >
       <div v-if="this.lastSeen">
         <b-col v-for="r in recipes" :key="r.id">
           <RecipePreview class="recipePreview" :recipe="r" />
@@ -12,7 +12,7 @@
       </div>
       <div v-else>
         <b-col>
-          <h3>You havn't seen any recipes yet!!!</h3>
+          <h5>You havn't seen any recipes yet!!!</h5>
         </b-col>
       </div>
     </b-row>
@@ -71,7 +71,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  min-height: 400px;
+
+h3,h5{
+  color: antiquewhite;
+  text-align: left;
 }
 </style>

@@ -1,15 +1,17 @@
 <template>
   <b-container>
+
     <h3>
-      Explore these recipes:
+       Explore these recipes:
       <slot></slot>
     </h3>
+    
     <b-col>
       <b-col v-for="r in recipes" :key="r.id">
         <RecipePreview class="recipePreview" :recipe="r" />
       </b-col>
-      <b-col>
-        <b-button v-on:click="updateRecipes">Replace Recipes</b-button>
+      <b-col >
+        <b-button id="btnRandom" v-on:click="updateRecipes">Replace Recipes</b-button>
       </b-col>
     </b-col>
   </b-container>
@@ -44,10 +46,11 @@ export default {
         );
 
         console.log(response);
-        const recipes = response.data.randomRecipes; /////// change to randomRecipes
+        const recipes = response.data.randomRecipes;
 
         this.recipes = [];
         this.recipes.push(...recipes);
+        
       } catch (error) {
         console.log(error);
       }
@@ -57,7 +60,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  min-height: 400px;
+
+h3{
+  color: antiquewhite;
+  text-align: left;
 }
+#btnRandom{
+  background-color: brown;
+  margin-bottom: 30px;
+  margin-left: 30%;
+}
+
+
 </style>

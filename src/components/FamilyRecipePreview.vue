@@ -44,6 +44,10 @@ export default {
 </script>
 
 <style>
+.card{
+  width: 450px;
+  height: 450px;
+}
 .card-img-top {
   width: 100%;
   height: 10vw;

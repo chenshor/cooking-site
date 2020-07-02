@@ -35,7 +35,7 @@
       <b-col>Is Vegetarian: {{ recipe.vegetarian }}</b-col>
       <b-col>Is Gluten Free: {{ recipe.glutenFree }}</b-col>
     </b-row>
-    <b-row class="ingredentsBox">
+    <b-row class="ingredentsBox" cols-sm="3">
       <div v-for="i in this.ingredients" :key="i.name">
         <b-col>
           <Ingredients class="Ingredients" :ingredient="i" />
