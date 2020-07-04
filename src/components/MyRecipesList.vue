@@ -38,11 +38,9 @@ export default {
           "https://ass3-2.herokuapp.com/users/myRecipePreview"
         );
         this.isFound = true;
-        console.log(response);
         const recipes = response.data.userRecipeInfo;
         this.recipes = [];
         this.recipes.push(...recipes);
-        // console.log(this.recipes);
       } catch (error) {
         this.isFound = false;
       }

@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <b-row>
+    <b-row cols-sm="3">
       <b-col v-for="r in recipes" :key="r.id">
         <RecipePreview class="familyPreview" :recipe="r" />
       </b-col>

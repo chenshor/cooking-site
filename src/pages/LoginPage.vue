@@ -1,6 +1,8 @@
 <template>
-  <div class="container">
-    <h1 class="title">Login</h1>
+<div>
+  <b-card-group columns>
+  <b-card  class="loginContainer" >
+    <h1 class="LItitle">Login</h1>
     <b-form @submit.prevent="onLogin">
       <b-form-group
         id="input-group-Username"
@@ -9,11 +11,14 @@
         label-for="Username"
       >
         <b-form-input
+          
           id="Username"
           v-model="$v.form.username.$model"
           type="text"
           :state="validateState('username')"
+          placeholder="username"
         ></b-form-input>
+
         <b-form-invalid-feedback>Username is required</b-form-invalid-feedback>
       </b-form-group>
 
@@ -23,20 +28,21 @@
         label="Password:"
         label-for="Password"
       >
-        <b-form-input
+        <b-form-input 
+          class="Linput"
           id="Password"
           type="password"
           v-model="$v.form.password.$model"
           :state="validateState('password')"
+          placeholder="password"
         ></b-form-input>
         <b-form-invalid-feedback>Password is required</b-form-invalid-feedback>
       </b-form-group>
-
-      <b-button
+      <b-button squared
+      variant="danger"
         type="submit"
-        variant="primary"
         style="width:100px;display:block;"
-        class="mx-auto w-100"
+        class="mx-auto w-50 BTNlogin"
       >Login</b-button>
       <div class="mt-2">
         Do not have an account yet?
@@ -50,10 +56,12 @@
       dismissible
       show
     >Login failed: {{ form.submitError }}</b-alert>
-    <!-- <b-card class="mt-3" header="Form Data Result">
-      <pre class="m-0">{{ form }}</pre>
-    </b-card>-->
-  </div>
+  </b-card>
+  <b-card-img id="imgCard1" src="https://res.cloudinary.com/di0zdzniy/image/upload/v1593778279/reg-pic2_ilthti.jpg" alt="Image" width="100%" height="100%" overlay></b-card-img>
+  <b-card-img id="imgCard2" src="https://res.cloudinary.com/di0zdzniy/image/upload/v1593778279/reg-pic_qbhf0q.jpg" alt="Image" width="100%" height="100%" overlay></b-card-img>
+
+  </b-card-group>
+</div>
 </template>
 
 <script>
@@ -93,32 +101,50 @@ export default {
             password: this.form.password
           }
         );
-        // console.log(response);
-        // this.$root.loggedIn = true;
-        console.log(this.$root.store.login);
+      
         this.$root.store.login(this.form.username);
         this.$router.push("/");
       } catch (err) {
-        console.log(err.response);
         this.form.submitError = err.response.data.message;
       }
     },
     onLogin() {
-      // console.log("login method called");
       this.form.submitError = undefined;
       this.$v.form.$touch();
       if (this.$v.form.$anyError) {
         return;
       }
-      // console.log("login method go");
 
       this.Login();
     }
   }
 };
 </script>
-<style lang="scss" scoped>
-.container {
-  max-width: 400px;
+<style>
+.loginContainer{
+  height: 50%;
+  margin-left: 20%;
+  margin-top: 25%;
 }
+#imgCard1{
+ width: 70%;
+ height: 60%;
+  margin-top: 10%;
+  margin-left: 60%;
+ 
+}
+#imgCard2{
+ width: 70%;
+ height: 60%;
+  margin-top: 60%;
+  margin-left: 20%;
+  
+ 
+}
+.LItitle{
+  color: black;
+  text-align: center;
+}
+
+
 </style>

@@ -45,7 +45,6 @@ export default {
           "https://ass3-2.herokuapp.com/recipes/randomRecipes"
         );
 
-        console.log(response);
         const recipes = response.data.randomRecipes;
 
         this.recipes = [];

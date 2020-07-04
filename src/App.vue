@@ -41,9 +41,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <div class="page">
     <router-view />
-    </div>
   </div>
 </template>
 
@@ -73,26 +71,20 @@ export default {
 <style lang="scss">
 html, body{
     width: 100%;
-    height: 100%;
+   height: 100%;
 }
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100%;
-  height: 100%;
-  
-
-}
- .page{
    background-image: url("https://res.cloudinary.com/di0zdzniy/image/upload/v1593699232/back2_jrhibg.png");
   background-repeat: inherit;
   background-size: cover;
   width: 100%;
   min-height: 100%;
-background-color: black;
- }
+
+}
 
 #nav {
   padding: 30px;
@@ -104,13 +96,15 @@ background-color: black;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #fee6c2;
 }
 
 .nav {
   background-color: #a52a2a;
    top: 0;
    height: 60px;
+   position: fixed;
+   
 }
 #home{
   text-align: center;

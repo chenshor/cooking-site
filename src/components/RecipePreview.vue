@@ -3,7 +3,7 @@
     :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
     class="recipePreview"
   >
-    <b-card
+    <b-card v-if="this.image_load"
       :img-src="this.recipe.image"
       img-alt="Image"
       img-top
@@ -14,20 +14,19 @@
       <b-card-text id="data-content">
         <b-col>
           <b-row align-h="center">
-          <h3 class="headline">{{recipe.title}}</h3>
+          <h4 class="headline">{{recipe.title}}</h4>
           </b-row>
           <b-row align-h="center">
-            <small>
+            <small  v-if="$root.store.username">
              <indication
-              v-if="$root.store.username"
               :recipe="recipe"
             ></indication>
           </small>
           <small>{{ recipe.readyInMinutes }} Minutes </small>
-          <small>{{ recipe.aggregateLikes }} likes </small>
-          <small v-if="recipe.glutenFree">no-gluten</small>
-          <small v-if="recipe.vegan">vegan</small>
-          <small v-if="recipe.vegetarian">vegetarian</small>
+          <small>{{ recipe.aggregateLikes }} Likes </small>
+          <small v-if="recipe.glutenFree">Gluten Free</small>
+          <small v-if="recipe.vegan">Vegan</small>
+          <small v-if="recipe.vegetarian">Vegetarian</small>
         </b-row>
 
         </b-col>
@@ -59,13 +58,12 @@ export default {
   },
   methods:{
     checkImg(){
-      
       if(this.recipe.image === undefined){
         
-        this.recipe.image = "https://res.cloudinary.com/di0zdzniy/image/upload/v1593707582/Picture1_cpn8ys.png"
-     console.log(this.recipe.image);
+      this.recipe.image = "https://res.cloudinary.com/di0zdzniy/image/upload/v1593766214/imgUndifine_obezhq.jpg"
      }
-
+     this.image_load = true;
+      
 
     }
   }
@@ -77,7 +75,7 @@ export default {
   width: 365px;
   height: 500px;
   border-style:none;
-  background-color: #fff2e6;
+  background-color: #fee6c2;
 }
 
 .card-img-top {
@@ -89,16 +87,20 @@ small{
   color: black;
   border: none;
   border-left: 1px solid rgb(179, 178, 178);
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 1.5em;
   bottom: 0;
  
 }
-h3{
+h4{
   color: black;
   text-align: center;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+}
+.recipePreview{
+    text-decoration: none;
+
 }
 
 

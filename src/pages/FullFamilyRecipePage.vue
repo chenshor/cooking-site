@@ -1,16 +1,16 @@
 <template>
-  <div class="container" v-if="recipe">
+  <div class="containerFamily" v-if="recipe">
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
         <h1 id="title">{{ recipe.RecipeName }}</h1>
         <img :src="recipe.image" class="center" />
       </div>
       <div class="recipe-body">
-        <b-row>
+        <b-row cols-sm="3" align-h="around" >
           <b-col v-for="i in recipe.Ingredients" :key="i.name">
             <Ingredients class="Ingredients" :ingredient="i" />
           </b-col>
-        </b-row>
+       <b-col>
         <br />
         Recipe Owner: {{recipe.RecipeOwner}}
         <br />
@@ -26,6 +26,9 @@
         <br />Instructions:
         <br />
         {{recipe.Instuctions}}
+       </b-col>
+        </b-row>
+
       </div>
       <div v-if="!isFound">You dont have any family recipes</div>
     </div>

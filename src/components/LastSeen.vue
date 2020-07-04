@@ -73,7 +73,7 @@ export default {
 <style lang="scss" scoped>
 
 h3,h5{
-  color: antiquewhite;
+  color: white;
   text-align: left;
 }
 </style>

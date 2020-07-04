@@ -5,8 +5,8 @@
           <h1 class="title">Let's Cook.. </h1>
         </b-col>
       </b-row>
-      <b-row align-self="stretch">
-        <b-col cols="5">
+      <b-row align-h="around" >
+        <b-col cols="5" >
           <RecipePreviewList title="Randome Recipes" class="RandomRecipes " />
         </b-col>
         <b-col cols="5">
@@ -55,8 +55,9 @@ export default {
   cursor: pointer;
   text-decoration: none;
 }
-h1{
-  color: blanchedalmond;
+.title{
+  color: white;
+  
 }
 .container{
  height: 100%;
@@ -64,7 +65,7 @@ h1{
  margin-right: 30%;
 }
 #btnLastSeen{
-   background-color: brown;
+background-color: brown;
  padding: 30px;
 }
 

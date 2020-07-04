@@ -1,14 +1,14 @@
 <template>
-  <b-container class="container">
+  <b-container class="containerSearch">
     <b-row>
       <b-col>
-        <h1 class="titleS">Search</h1>
+        <h1 class="titleS">Search Recipes</h1>
       </b-col>
     </b-row>
-    <b-row>
+    <b-row >
       <b-col>
-        <b-form @submit.prevent="searchRecipe">
-          <b-form-group label="search" label-for="search">
+        <b-form class="formSearch" @submit.prevent="searchRecipe">
+          <b-form-group label="Search" label-for="search">
             <b-form-input id="search" v-model="search" placeholder="Search here.."></b-form-input>
           </b-form-group>
 
@@ -21,7 +21,7 @@
                       @remove="removeTag(tag)"
                       :title="tag"
                       :disabled="disabled"
-                      variant="info"
+                      variant="danger"
                     >{{ tag }}</b-form-tag>
                   </li>
                 </ul>
@@ -32,7 +32,7 @@
                   :options="cuisine"
                 >
                   <template v-slot:first>
-                    <option disabled value>Choose a tag...</option>
+                    <option disabled value>Choose a cuisine...</option>
                   </template>
                 </b-form-select>
               </template>
@@ -48,7 +48,7 @@
                       @remove="removeTag(tag)"
                       :title="tag"
                       :disabled="disabled"
-                      variant="info"
+                      variant="danger"
                     >{{ tag }}</b-form-tag>
                   </li>
                 </ul>
@@ -59,7 +59,7 @@
                   :options="diet"
                 >
                   <template v-slot:first>
-                    <option disabled value>Choose a tag...</option>
+                    <option disabled value>Choose a diet...</option>
                   </template>
                 </b-form-select>
               </template>
@@ -71,6 +71,7 @@
               size="lg"
               add-on-change
               no-outer-focus
+              variant="danger"
               class="mb-2"
             >
               <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
@@ -80,7 +81,7 @@
                       @remove="removeTag(tag)"
                       :title="tag"
                       :disabled="disabled"
-                      variant="info"
+                      variant="danger"
                     >{{ tag }}</b-form-tag>
                   </li>
                 </ul>
@@ -91,7 +92,7 @@
                   :options="intolerance"
                 >
                   <template v-slot:first>
-                    <option disabled value>Choose a tag...</option>
+                    <option disabled value>Choose a intolerance...</option>
                   </template>
                 </b-form-select>
               </template>
@@ -106,27 +107,28 @@
               name="numberOfResults"
             ></b-form-radio-group>
           </b-form-group>
-          <b-button type="submit" variant="primary" style="width:250px;" class="ml-5 w-75">Search</b-button>
+          <b-button type="submit" variant="danger" style="width:250px;" class="btnForm w-50">Search</b-button>
         </b-form>
         <b-row v-if="recipes.length>0">
-          <b-form-group label="Sort by:">
-            <b-form-radio
-              name="some-radios"
-              v-on:change="sortArraysLikes"
-              value="aggregateLikes"
-            >Likes</b-form-radio>
-            <b-form-radio
-              v-on:change="sortArraysTime"
-              name="some-radios"
-              value="readyInMinutes"
-            >Time</b-form-radio>
+          <div class="resultHead">
+          <h2>
+            Found {{recipes.length}} Recipes
+          </h2>
+          <b-form-group  label="Sort By" >
+            <b-form-radio-group
+              v-model="sortSelect"
+              name="radio-inline"
+              :options="sortOptions"
+              v-on:change="sortArraysTime">
+            </b-form-radio-group>
           </b-form-group>
+          </div>
         </b-row>
       </b-col>
     </b-row>
-    <b-row class="recipesSearch">
+    <b-row class="recipesSearch" cols-sm="3">
       <div v-for="r in recipes" :key="r.id">
-        <b-col>
+        <b-col >
           <RecipePreview class="recipePreview" :recipe="r" />
         </b-col>
       </div>
@@ -164,7 +166,14 @@ export default {
         { text: "10", value: "10" },
         { text: "15", value: "15" }
       ],
-      recipes: []
+      recipes: [],
+      sortSelect: '',
+      sortOptions:[
+        {text: 'Time', value: 'time'},
+        {text: 'Likes', value: 'likes'},
+        
+      ],
+     
     };
   },
   methods: {
@@ -183,9 +192,11 @@ export default {
 
         let number = this.selected;
 
-        const response = await this.axios.get(
+        let response = await this.axios.get(
           `https://ass3-2.herokuapp.com/recipes/search/query/${query}/amount/${number}`
         );
+      
+        
         this.isFound = true;
         const recipes = response.data.data;
         this.recipes = [];
@@ -197,10 +208,18 @@ export default {
       }
     },
     sortArraysTime(event) {
-      // this.recipes = orderBy(this.recipes, this.sort, "asc");
+      
+      if(event === "time"){
+        
       this.recipes.sort((a, b) => {
         return a.readyInMinutes < b.readyInMinutes ? -1 : 1;
       });
+      }
+      if(event === "likes"){
+         this.recipes.sort((a, b) => {
+        return a.aggregateLikes < b.aggregateLikes ? -1 : 1;
+      });
+      }
     },
     sortArraysLikes(event) {
       // this.recipes = orderBy(this.recipes, this.sort, "asc");
@@ -223,7 +242,34 @@ export default {
 </script>
 
 <style>
-.container {
+.containerSearch {
   width: 100%;
+  height: 100%;
+
+}
+
+.containerSearch .formSearch{
+  background-color: rgb(243, 213, 200);
+  padding: 10px;
+  width: 60%;
+  margin-bottom: 20px;
+  margin-left: 20%;
+
+}
+.resultHead{
+  background-color: brown;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.btnForm{
+  margin-left: 25%;
+}
+.containerSearch h1{
+  color: whitesmoke;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 </style>

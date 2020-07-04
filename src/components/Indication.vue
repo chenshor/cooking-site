@@ -74,8 +74,8 @@ export default {
 .indication{
   border: none;
   border-left: 1px solid rgb(179, 178, 178);
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
   height: 1.5em;
 }
 .hears{
