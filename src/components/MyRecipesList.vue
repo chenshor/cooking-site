@@ -1,11 +1,11 @@
 <template>
   <b-container>
-    <b-row>
+    <b-row cols-sm="3">
       <b-col v-for="r in recipes" :key="r.id">
         <MyRecipePreview class="MyRecipePreview" :recipe="r" />
       </b-col>
     </b-row>
-    <div v-if="!isFound">You dont have any recipes yet!</div>
+    <div v-if="recipes.length === 0">You dont have any recipes yet!</div>
   </b-container>
 </template>
 
@@ -15,12 +15,6 @@ export default {
   name: "MyRecipeList",
   components: {
     MyRecipePreview
-  },
-  props: {
-    title: {
-      type: String,
-      required: true
-    }
   },
   data() {
     return {
@@ -51,6 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  min-height: 400px;
+  width: 100%;
+  height: 100%;
 }
 </style>

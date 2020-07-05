@@ -1,55 +1,58 @@
 <template>
-  <b-container v-if="recipe">
-    <b-row class="text-center" align-v="stretch">
-      <b-col class="title">
-        <h5>{{ recipe.title }}</h5>
-      </b-col>
-    </b-row>
-    <b-row align-v="stretch">
-      <b-col class="Image">
-        <b-img
-          class="foodImg"
-          :src="recipe.image"
-          fluid
-          alt="Responsive image"
-          center
-        ></b-img>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col class="text-center">
-        <h1>{{ recipe.RecipeName }}</h1>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <Indication
-          v-if="$root.store.username"
-          :recipe="this.recipe"
-        ></Indication>
-      </b-col>
-      <b-col>Time: {{ recipe.readyInMinutes }}</b-col>
-      <b-col>Likes: {{ recipe.aggregateLikes }}</b-col>
-      <b-col>Servings: {{ recipe.servings }}</b-col>
-      <b-col>Is Vegan: {{ recipe.vegan }}</b-col>
-      <b-col>Is Vegetarian: {{ recipe.vegetarian }}</b-col>
-      <b-col>Is Gluten Free: {{ recipe.glutenFree }}</b-col>
-    </b-row>
-    <b-row class="ingredentsBox" cols-sm="3">
-      <div v-for="i in this.ingredients" :key="i.name">
-        <b-col>
-          <Ingredients class="Ingredients" :ingredient="i" />
-        </b-col>
-      </div>
 
-      <b-row>
-        <b-col>
-          instructions:
-          {{ recipe.instructions }}
-        </b-col>
-      </b-row>
-    </b-row>
-  </b-container>
+ <div class="containerFullRecipe" v-if="recipe">
+    <div class="recipeHeader">
+      <div class="RecipeContact">
+      <div class="lable">Full Recipe</div>
+        <h1 class="title">{{ recipe.title }}</h1>
+
+      </div>
+      </div>
+      <div class="media">
+        <img :src="recipe.image" class="center" />
+      </div>
+      <div class="recipe-body">
+        <div class="previewData">
+          <b-col>
+            <b-row>
+              <div class="data">{{recipe.readyInMinutes}} Minutes </div>
+               <div class="data">{{recipe.aggregateLikes}} Likes</div>
+               <div class="data">{{recipe.servings}} Services</div>
+              <div class="data" v-if="recipe.glutenFree">Gluten Free</div>
+              <div class="data" v-if="recipe.vegan">Vegan</div>
+              <div class="data" v-if="recipe.vegetarian">Vegetarian</div>
+              <div class="indication" >       
+              <Indication
+                v-if="$root.store.username"
+                :recipe="this.recipe"
+              ></Indication>
+              </div>
+             </b-row>
+          </b-col>
+        </div>
+      <div class="bodyData">
+           <b-row align-h="between" >
+              <b-col cols="6" >
+                <h2 >How To Make?</h2>
+            <div class="instruction">
+              {{ recipe.instructions }}
+            </div>
+          </b-col>
+          <b-col  cols="5">
+            <h2 >What Do You Need?</h2>>
+            <b-row cols-sm="3" align-h="end" >
+          <b-col  v-for="i in recipe.Ingredients" :key="i.name">
+            <Ingredients class="Ingredients" :ingredient="i" />
+          </b-col>
+          </b-row>
+          </b-col>
+        </b-row>
+      </div>
+      </div>
+       <div v-if="!recipe">You dont have any family recipes</div>
+      </div>
+ 
+ 
 </template>
 
 <script>
@@ -133,20 +136,106 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+.containerFullRecipe{
+  width: 100%;
+
+}
+
+.recipeHeader{
+  background: rgb(243, 213, 200);
   display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+
 }
-.wrapped {
-  width: 50%;
+.title{
+  color: black;
+  line-height: 60px;
+  font-size: 74px;
+  font-family: 'Barlev';
+  letter-spacing: 1px;
+
 }
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+.lable{
+    text-align: center;
+    color: whitesmoke;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    background-color: brown;
+    border: 1px whitesmoke solid;
+    min-width: auto;
+    letter-spacing: 1px;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    font-family: 'Abraham';
+    font-size: 16px;
+    font-weight: 500;
+}
+.RecipeContact{
+ max-width: 980px;
+    text-align: center;
+    margin: 40px 0;
 }
 
-/* .recipe-header{
+.media img{
+    width: 50%;
+    height: 40%;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    
+}
+.media{
+  background-color: brown;
+}
+.previewData{
+  color: rgb(243, 213, 200);
+  border-bottom: 2px solid rgb(243, 213, 200);
+  width: 100%;
+  justify-content: space-between;
+    padding-bottom: 13px;
+}
+.data{
+    border-right: 1px solid rgb(243, 213, 200);
+    height: inherit;
+    float: right;
+    padding: 0 18px;
+    font-size: 30px;
+    font-family: 'Barlev';
+    line-height: 30px;
+    margin-top: 50px;
 
-} */
+}
+.instruction{
+  color: whitesmoke;
+  line-height: 40px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin-left: 5px;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 70px;
+
+
+}
+.bodyData h2{
+  color: rgb(243, 213, 200);
+  margin-top: 75px;
+  margin-bottom: 20px;
+  text-align: center;
+
+}
+.indication{
+    border-right: 1px solid rgb(243, 213, 200);
+    height: inherit;
+    float: right;
+    padding: 0 18px;
+    font-size: 30px;
+    font-family: 'Barlev';
+    margin-top: 50px;
+    
+
+}
 </style>

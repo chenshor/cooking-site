@@ -2,6 +2,7 @@
   <div id="app">
     <b-navbar position: sticky toggleable="lg" type="dark" class="nav">
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+    
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
@@ -9,12 +10,14 @@
           <b-nav-item to="/about">About</b-nav-item>
         </b-navbar-nav>
 
-      <b-navbar-brand 
+           <b-navbar-brand 
       class="ml-auto mb-0"
        tag="h1" 
        to="/">
       <logo></logo>Forkoolar   
       </b-navbar-brand>
+
+     
 
         <b-navbar-nav class="ml-auto mb-2">
           <b-navbar-nav v-if="!$root.store.username">
@@ -70,8 +73,8 @@ export default {
 
 <style lang="scss">
 html, body{
-    width: 100%;
-   height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 #app {
@@ -80,7 +83,7 @@ html, body{
   -moz-osx-font-smoothing: grayscale;
    background-image: url("https://res.cloudinary.com/di0zdzniy/image/upload/v1593699232/back2_jrhibg.png");
   background-repeat: inherit;
-  background-size: cover;
+  background-size: 100%;
   width: 100%;
   min-height: 100%;
 

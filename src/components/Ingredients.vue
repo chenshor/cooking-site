@@ -1,18 +1,16 @@
 <template>
   <b-card
-    :sub-title="ingredient.name"
+    :title="ingredient.name"
     :img-src="ingredient.image"
     img-alt="Image"
     img-top
     tag="article"
-    style="max-width: 11rem; max-height: 12rem"
-    align="center"
-    class="mb-2"
+    
   >
-    <b-card-sub-title>
+    <b-card-text>
       {{ingredient.amount.metric.value}}
       {{ingredient.amount.metric.unit}}
-    </b-card-sub-title>
+    </b-card-text>
   </b-card>
 </template>
 
@@ -33,14 +31,23 @@ export default {
 </script>
 
 <style scoped>
+.card{
+  width: 190px;
+  height: 250px;
+   border-style:none;
+  background-color: #fee6c2;
+  margin-top: 40px;
+}
 .img {
   width: 100%;
 }
+.card-title{
+  font-size: 20px;
+}
 .card-img-top {
-  height: 10vw;
+  width: 100%;
+  height: 60%;
   object-fit: cover;
 }
-.tab-title-class {
-  color: blueviolet;
-}
+
 </style>

@@ -56,7 +56,7 @@ export default {
   text-decoration: none;
 }
 .title{
-  color: white;
+  color: whitesmoke;
   
 }
 .container{

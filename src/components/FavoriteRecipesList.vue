@@ -5,6 +5,8 @@
         <RecipePreview class="familyPreview" :recipe="r" />
       </b-col>
     </b-row>
+    <div v-if="recipes.length === 0">You dont have any recipes yet!</div>
+
   </b-container>
 </template>
 
@@ -15,12 +17,7 @@ export default {
   components: {
     RecipePreview
   },
-  props: {
-    title: {
-      type: String,
-      required: true
-    }
-  },
+
   data() {
     return {
       recipes: []
@@ -36,12 +33,10 @@ export default {
           "https://ass3-2.herokuapp.com/users/favoriteRecipes"
         );
 
-        console.log(response);
         const recipes = response.data.ids;
 
         this.recipes = [];
         this.recipes.push(...recipes);
-        // console.log(this.recipes);
       } catch (error) {
         console.log(error);
       }

@@ -1,25 +1,28 @@
 <template>
   <router-link :to="{ name: 'myRecipe', params: { id: recipe.id } }" class="recipePreview">
+
     <b-card
-      :title="recipe.title"
-      :img-src="recipe.image"
+       :img-src="recipe.image"
       img-alt="Image"
       img-top
+      img-fluid="fluid"
       tag="article"
-      style="max-width: 20rem;max-height:auto;"
-      class="mb-4"
+      class="mb-2"
     >
-      <b-card-text class="card h-100">
-        {{ recipe.readyInMinutes }} readyInMinutes
-        <br />
-        {{ recipe.aggregateLikes }} likes
-        <br />
-        is gluten free: {{ recipe.glutenFree }}
-        <br />
-        is vegan: {{ recipe.vegan }}
-        <br />
-        is vegetarian:{{ recipe.vegetarian }}
-        <!-- {{recipe}} -->
+      <b-card-text >
+        <b-col>
+          <b-row align-h="center">
+          <h4 class="headline">{{recipe.title}}</h4>
+          </b-row>
+          <b-row align-h="center">
+          <small>{{ recipe.readyInMinutes }} </small>
+          <small>{{ recipe.aggregateLikes }} Likes </small>
+          <small v-if="recipe.glutenFree">Gluten Free</small>
+          <small v-if="recipe.vegan">Vegan</small>
+          <small v-if="recipe.vegetarian">Vegetarian</small>
+        </b-row>
+
+        </b-col>
       </b-card-text>
     </b-card>
   </router-link>
@@ -41,10 +44,36 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.card{
+  width: 365px;
+  height: 500px;
+  border-style:none;
+  background-color: #fee6c2;
+}
+
 .card-img-top {
   width: 100%;
-  height: 10vw;
+  height: 65%;
   object-fit: cover;
+}
+small{
+  color: black;
+  border: none;
+  border-left: 1px solid rgb(179, 178, 178);
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 1.5em;
+  bottom: 0;
+ 
+}
+h4{
+  color: black;
+  text-align: center;
+  padding-bottom: 5px;
+}
+.recipePreview{
+    text-decoration: none;
+
 }
 </style>

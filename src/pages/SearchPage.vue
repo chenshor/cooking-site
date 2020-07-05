@@ -1,10 +1,7 @@
 <template>
   <b-container class="containerSearch">
-    <b-row>
-      <b-col>
-        <h1 class="titleS">Search Recipes</h1>
-      </b-col>
-    </b-row>
+   <h1 class="titleS">Search Recipes </h1>
+    
     <b-row >
       <b-col>
         <b-form class="formSearch" @submit.prevent="searchRecipe">
@@ -109,8 +106,10 @@
           </b-form-group>
           <b-button type="submit" variant="danger" style="width:250px;" class="btnForm w-50">Search</b-button>
         </b-form>
-        <b-row v-if="recipes.length>0">
-          <div class="resultHead">
+        
+       
+        <b-row >
+          <div v-if="isFound || recipes.length > 0" class="resultHead">
           <h2>
             Found {{recipes.length}} Recipes
           </h2>
@@ -119,21 +118,23 @@
               v-model="sortSelect"
               name="radio-inline"
               :options="sortOptions"
-              v-on:change="sortArraysTime">
+              v-on:change="sortArrays">
             </b-form-radio-group>
           </b-form-group>
           </div>
         </b-row>
-      </b-col>
-    </b-row>
     <b-row class="recipesSearch" cols-sm="3">
       <div v-for="r in recipes" :key="r.id">
         <b-col >
           <RecipePreview class="recipePreview" :recipe="r" />
         </b-col>
-      </div>
+      </div>   
     </b-row>
-    <h3 v-if="!isFound">Recipe not found</h3>
+    </b-col>
+    </b-row>
+  <div v-if="(isFound === false & recipes.length ===0)">
+    <h2  class="noResult"  >Found {{recipes.length}} Recipes</h2>
+  </div>
   </b-container>
 </template>
 
@@ -158,7 +159,7 @@ export default {
       search: "",
       valueIntolerance: [],
       errors: [],
-      isFound: Boolean,
+      isFound: undefined,
 
       selected: "5", // Must be an array reference!
       options: [
@@ -191,23 +192,28 @@ export default {
         }
 
         let number = this.selected;
+        var myCookie = document.cookie.indexOf('session');
+        console.log(myCookie);
 
         let response = await this.axios.get(
           `https://ass3-2.herokuapp.com/recipes/search/query/${query}/amount/${number}`
         );
       
-        
         this.isFound = true;
         const recipes = response.data.data;
         this.recipes = [];
         this.recipes.push(...recipes);
         sessionStorage.removeItem("recipes");
         sessionStorage.recipes = JSON.stringify(this.recipes);
+        
+        
       } catch (err) {
-        this.isFound = false;
-      }
+      this.isFound = false;
+      this.recipes=[];
+        sessionStorage.recipes = JSON.stringify(this.recipes);
+          }
     },
-    sortArraysTime(event) {
+    sortArrays(event) {
       
       if(event === "time"){
         
@@ -221,19 +227,12 @@ export default {
       });
       }
     },
-    sortArraysLikes(event) {
-      // this.recipes = orderBy(this.recipes, this.sort, "asc");
-      this.recipes.sort((a, b) => {
-        return a.aggregateLikes < b.aggregateLikes ? -1 : 1;
-      });
-    }
   },
 
   mounted() {
     this.cuisine.push(...cuisine);
     this.diet.push(...diet);
     this.intolerance.push(...intolerance);
-    console.log(this.recipes.length);
     if (sessionStorage.recipes) {
       this.recipes = JSON.parse(sessionStorage.getItem("recipes"));
     }
@@ -271,5 +270,12 @@ export default {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.noResult{
+  background-color: brown;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 </style>

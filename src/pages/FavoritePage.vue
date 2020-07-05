@@ -14,8 +14,12 @@ export default {
 };
 </script>
 
-<style>
+<style scop>
 .title {
-  color: #e43d3d;
+  color: whitesmoke;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
+
 </style>

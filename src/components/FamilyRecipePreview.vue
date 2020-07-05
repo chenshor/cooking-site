@@ -1,27 +1,28 @@
 <template>
-  <router-link :to="{ name: 'familyRecipe', params: { id: recipe.id } }" class="recipePreview">
+  <router-link :to="{ name: 'familyRecipe', params: { id: recipe.id } }" class="recipePreviewFamily">
     <b-card
-      :title="recipe.RecipeName"
       :img-src="recipe.Image"
       img-alt="Image"
       img-top
+      img-fluid="fluid"
       tag="article"
-      style="max-width: 20rem;max-height:auto;"
       class="mb-2"
     >
       <b-card-text>
-        servings:{{ recipe.servings }}
-        <br />
-        RecipeOwner: {{ recipe.RecipeOwner }}
-        <br />
-        Prepared: {{recipe.Prepared}}
-        <br />
-        is gluten free: {{ recipe.glutenFree }}
-        <br />
-        is vegan: {{ recipe.vegan }}
-        <br />
-        is vegetarian:{{ recipe.vegetarian }}
-        <!-- {{recipe}} -->
+        <b-col>
+          <b-row align-h="center">
+          <h4 class="headline">{{recipe.RecipeName}}</h4>
+          </b-row>
+          <b-row align-h="center">
+          <small>by {{ recipe.RecipeOwner }} </small>
+          <small >{{ recipe.servings }} services</small>
+          <small>{{recipe.Prepared}} </small>
+          <small v-if="recipe.glutenFree">Gluten Free</small>
+          <small v-if="recipe.vegan">Vegan</small>
+          <small v-if="recipe.vegetarian">Vegetarian</small>
+        </b-row>
+
+        </b-col>
       </b-card-text>
     </b-card>
   </router-link>
@@ -43,14 +44,36 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .card{
-  width: 450px;
-  height: 450px;
+  width: 365px;
+  height: 500px;
+  border-style:none;
+  background-color: #fee6c2;
 }
+
 .card-img-top {
   width: 100%;
-  height: 10vw;
+  height: 65%;
   object-fit: cover;
+}
+small{
+  color: black;
+  border: none;
+  border-left: 1px solid rgb(179, 178, 178);
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 1.5em;
+  bottom: 0;
+ 
+}
+h4{
+  color: black;
+  text-align: center;
+  padding-bottom: 5px;
+}
+.recipePreviewFamily{
+    text-decoration: none;
+
 }
 </style>
