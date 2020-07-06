@@ -1,15 +1,15 @@
 <template>
   <b-card
-    :sub-title="ingredient.name"
+    :title="ingredient.name"
+    :img-src="url"
+    img-alt="Image"
+    img-top
     tag="article"
-    style="max-width: 11rem; max-height: 12rem"
-    align="center"
-    class="mb-2"
   >
-    <b-card-sub-title>
+    <b-card-text>
       {{ingredient.amount.metric.value}}
       {{ingredient.amount.metric.unit}}
-    </b-card-sub-title>
+    </b-card-text>
   </b-card>
 </template>
 
@@ -17,7 +17,8 @@
 export default {
   data() {
     return {
-      image_load: false
+      image_load: false,
+      url:""
     };
   },
   props: {
@@ -25,19 +26,37 @@ export default {
       type: Object,
       required: true
     }
+  },
+  mounted(){
+    this.updateImage()
+  },
+  methods:{
+    updateImage(){
+      let name =this.ingredient.image
+      this.url = "https://spoonacular.com/cdn/ingredients_100x100/"+ this.ingredient.image;
+      console.log(this.url);
+
+    }
   }
 };
 </script>
 
 <style scoped>
-.img {
-  width: 100%;
+.card{
+  width: 190px;
+  height: 250px;
+   border-style:none;
+  background-color: #fee6c2;
+  margin-top: 40px;
+}
+
+.card-title{
+  font-size: 20px;
 }
 .card-img-top {
-  height: 10vw;
+  width: 100%;
+  height: 60%;
   object-fit: cover;
 }
-.tab-title-class {
-  color: blueviolet;
-}
+
 </style>

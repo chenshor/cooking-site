@@ -92,6 +92,7 @@ const shared_data = {
   logout() {
     console.log("logout");
     localStorage.removeItem("username");
+    sessionStorage.removeItem("recipes");
     this.username = undefined;
   },
 };

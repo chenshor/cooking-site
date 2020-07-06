@@ -203,13 +203,15 @@ export default {
         const recipes = response.data.data;
         this.recipes = [];
         this.recipes.push(...recipes);
-        sessionStorage.removeItem("recipes");
+        if(localStorage.getItem("username")){
+          sessionStorage.removeItem("recipes");
         sessionStorage.recipes = JSON.stringify(this.recipes);
-        
-        
+        }
+    
       } catch (err) {
       this.isFound = false;
       this.recipes=[];
+      if(localStorage.getItem("username"))
         sessionStorage.recipes = JSON.stringify(this.recipes);
           }
     },

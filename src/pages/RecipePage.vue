@@ -41,8 +41,9 @@
           <b-col  cols="5">
             <h2 >What Do You Need?</h2>>
             <b-row cols-sm="3" align-h="end" >
-          <b-col  v-for="i in recipe.Ingredients" :key="i.name">
+          <b-col  v-for="i in this.ingredients" :key="i.name">
             <Ingredients class="Ingredients" :ingredient="i" />
+            
           </b-col>
           </b-row>
           </b-col>
@@ -74,7 +75,6 @@ export default {
     try {
       let response;
       let seen;
-      // response = this.$route.params.response;
       let id = this.$route.params.recipeId;
       let responseIng;
       try {
