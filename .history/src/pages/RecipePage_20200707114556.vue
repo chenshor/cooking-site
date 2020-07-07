@@ -118,18 +118,8 @@ export default {
       };
       this.ingredients = responseIng.data.ingredients.ingredients;
       this.recipe = _recipe;
-      this.recipe.instructions = this.recipe.instructions.replace(/<li>/g, "");
-      this.recipe.instructions = this.recipe.instructions.replace(/<ol>/g, "");
       this.recipe.instructions = this.recipe.instructions.replace(
-        /<\/li>/g,
-        ""
-      );
-      this.recipe.instructions = this.recipe.instructions.replace(
-        /<\/ol>/g,
-        ""
-      );
-      this.recipe.instructions = this.recipe.instructions.replace(
-        /DIRECTIONS:/g,
+        /</li><li>/g,
         ""
       );
     } catch (error) {

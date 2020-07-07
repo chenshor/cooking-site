@@ -37,13 +37,7 @@
             ></b-form-input>
             <b-form-invalid-feedback>Password is required</b-form-invalid-feedback>
           </b-form-group>
-          <b-button
-            id="loginbtn"
-            type="submit"
-            variant="danger"
-            style="width:250px;"
-            class="ml-5 w-75"
-          >Login</b-button>
+          <b-button variant="danger" style="width:250px;" class="ml-5 w-75">Login</b-button>
           <div class="mt-2">
             Do not have an account yet?
             <router-link to="register">Register in here</router-link>
@@ -142,9 +136,10 @@ export default {
 }
 
 .LItitle {
+  position: relative;
   color: rgb(219, 212, 212);
-  margin-top: 15%;
-  margin-left: 54%;
+  top: 20%;
+  left: 60%;
 }
 
 .title2 {
@@ -158,11 +153,5 @@ export default {
   color: rgb(219, 212, 212);
   top: 25%;
   left: 59%;
-}
-
-#loginbtn {
-  margin-top: 5%;
-  position: relative;
-  left: 12%;
 }
 </style>

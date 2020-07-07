@@ -142,9 +142,10 @@ export default {
 }
 
 .LItitle {
+  position: relative;
   color: rgb(219, 212, 212);
-  margin-top: 15%;
-  margin-left: 54%;
+  top: 20%;
+  left: 60%;
 }
 
 .title2 {
@@ -163,6 +164,6 @@ export default {
 #loginbtn {
   margin-top: 5%;
   position: relative;
-  left: 12%;
+  left: 20%;
 }
 </style>

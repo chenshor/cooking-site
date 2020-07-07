@@ -38,11 +38,11 @@
             <b-form-invalid-feedback>Password is required</b-form-invalid-feedback>
           </b-form-group>
           <b-button
-            id="loginbtn"
-            type="submit"
+            squared
             variant="danger"
-            style="width:250px;"
-            class="ml-5 w-75"
+            type="submit"
+            style="width:100px;display:block;"
+            class="mx-auto w-50 BTNlogin"
           >Login</b-button>
           <div class="mt-2">
             Do not have an account yet?
@@ -136,15 +136,16 @@ export default {
   width: 40%;
   height: 50%;
   position: absolute;
-  top: 33%;
+  top: 20%;
   /* margin-top: 25%; */
-  left: 47%;
+  left: 50%;
 }
 
 .LItitle {
+  position: relative;
   color: rgb(219, 212, 212);
-  margin-top: 15%;
-  margin-left: 54%;
+  top: 20%;
+  left: 60%;
 }
 
 .title2 {
@@ -158,11 +159,5 @@ export default {
   color: rgb(219, 212, 212);
   top: 25%;
   left: 59%;
-}
-
-#loginbtn {
-  margin-top: 5%;
-  position: relative;
-  left: 12%;
 }
 </style>

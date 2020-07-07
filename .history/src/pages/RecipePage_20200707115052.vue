@@ -120,18 +120,6 @@ export default {
       this.recipe = _recipe;
       this.recipe.instructions = this.recipe.instructions.replace(/<li>/g, "");
       this.recipe.instructions = this.recipe.instructions.replace(/<ol>/g, "");
-      this.recipe.instructions = this.recipe.instructions.replace(
-        /<\/li>/g,
-        ""
-      );
-      this.recipe.instructions = this.recipe.instructions.replace(
-        /<\/ol>/g,
-        ""
-      );
-      this.recipe.instructions = this.recipe.instructions.replace(
-        /DIRECTIONS:/g,
-        ""
-      );
     } catch (error) {
       console.log(error);
     }

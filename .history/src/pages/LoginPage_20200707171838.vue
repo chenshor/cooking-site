@@ -143,14 +143,14 @@ export default {
 
 .LItitle {
   color: rgb(219, 212, 212);
-  margin-top: 15%;
+  margin-top: 20%;
   margin-left: 54%;
 }
 
 .title2 {
   position: absolute;
   color: rgb(219, 212, 212);
-  top: 20%;
+  top: 18%;
   left: 52%;
 }
 .title3 {

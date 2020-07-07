@@ -136,9 +136,8 @@
             <input type="file" class="form-control-file" id="exampleFormControlFile1" />
           </b-form-group>
 
-          <b-button type="submit" variant="danger" style="width:250px;" class="ml-5 w-75">Register</b-button>
-          <br />
-          <b-button id="resetbtn" type="reset" class="ml-5 w-40">Reset</b-button>
+          <b-button type="reset" variant="danger">Reset</b-button>
+          <b-button type="submit" variant="primary" style="width:250px;" class="ml-5 w-75">Register</b-button>
           <div class="mt-2">
             You have an account already?
             <router-link to="login">Log in here</router-link>
@@ -293,23 +292,20 @@ export default {
 <style lang="scss" scoped>
 .registerContainer {
   width: 40%;
-  left: -80%;
+  margin-left: -80%;
   margin-top: 15%;
-  background-color: TRANSPARENT;
-  color: rgb(204, 135, 135);
 }
 
 .title {
-  position: relative;
   color: rgb(219, 212, 212);
-  top: 0%;
-  left: 20%;
+  margin-top: 0%;
+  margin-left: 30%;
 }
 
 #imgCard1 {
   width: 150%;
-  height: 150%;
-  margin-top: 25%;
+  height: 140%;
+  margin-top: 23%;
   margin-left: -60%;
 }
 
@@ -321,14 +317,7 @@ export default {
 .title2 {
   position: absolute;
   color: rgb(219, 212, 212);
-  top: 20%;
-  left: 55%;
-}
-
-#resetbtn {
-  margin-top: 5%;
-  position: relative;
-  left: 30%;
-  color: aliceblue;
+  top: 40%;
+  margin-left: -40%;
 }
 </style>

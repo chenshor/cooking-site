@@ -241,11 +241,12 @@ export default {
 }
 
 .containerSearch .formSearch {
-  background-color: rgb(243, 213, 200);
+  background-color: transparent;
   padding: 10px;
   width: 60%;
   margin-bottom: 20px;
   margin-left: 20%;
+  color: brown;
 }
 .resultHead {
   background-color: brown;

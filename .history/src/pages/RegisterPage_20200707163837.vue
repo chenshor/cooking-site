@@ -300,7 +300,7 @@ export default {
 }
 
 .title {
-  position: relative;
+  position: absolute;
   color: rgb(219, 212, 212);
   top: 0%;
   left: 20%;

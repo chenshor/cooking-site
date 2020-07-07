@@ -302,8 +302,8 @@ export default {
 .title {
   position: relative;
   color: rgb(219, 212, 212);
-  top: 0%;
-  left: 20%;
+  margin-top: 0%;
+  margin-left: 30%;
 }
 
 #imgCard1 {
