@@ -1,11 +1,10 @@
 <template>
   <b-container>
-
+    <div class="title">
     <h3>
        Explore these recipes:
-      <slot></slot>
     </h3>
-    
+    </div>
     <b-col>
       <b-col v-for="r in recipes" :key="r.id">
         <RecipePreview class="recipePreview" :recipe="r" />
@@ -60,9 +59,9 @@ export default {
 
 <style lang="scss" scoped>
 
-h3{
+.title{
   color: antiquewhite;
-  text-align: left;
+  text-align: center;
 }
 #btnRandom{
   background-color: brown;

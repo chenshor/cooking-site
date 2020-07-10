@@ -76,7 +76,6 @@ export default {
           `https://ass3-2.herokuapp.com/recipes/ingredients/${id}`
         );
 
-        // console.log($root.store.username);
         if (localStorage.username) {
           seen = await this.axios.post(
             `https://ass3-2.herokuapp.com/users/recipeInfo/seen/${id}`

@@ -187,8 +187,6 @@ export default {
         }
 
         let number = this.selected;
-        var myCookie = document.cookie.indexOf("session");
-        console.log(myCookie);
 
         let response = await this.axios.get(
           `https://ass3-2.herokuapp.com/recipes/search/query/${query}/amount/${number}`

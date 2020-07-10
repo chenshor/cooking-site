@@ -1,10 +1,11 @@
 <template>
   <b-container>
+    <div class="title">
     <h3>
       {{ title }}:
-      <slot></slot>
     </h3>
-    <b-row >
+    </div>
+    <b-row>
       <div v-if="this.lastSeen">
         <b-col v-for="r in recipes" :key="r.id">
           <RecipePreview class="recipePreview" :recipe="r" />
@@ -12,7 +13,10 @@
       </div>
       <div v-else>
         <b-col>
-          <h5>You havn't seen any recipes yet!!!</h5>
+          <b-alert show variant="danger">
+            <h2> You havn't seen any recipes yet !</h2>
+            <h5> Find your recipes and discover the magical of cooking </h5>
+          </b-alert>
         </b-col>
       </div>
     </b-row>
@@ -35,7 +39,7 @@ export default {
   data() {
     return {
       recipes: [],
-      lastSeen: Boolean
+      lastSeen: Boolean,
     };
   },
   mounted() {
@@ -57,7 +61,6 @@ export default {
           this.recipes.push(...recipes);
         }
       } catch (error) {
-        // console.log(error);
         this.lastSeen = false;
       }
     },
@@ -67,13 +70,22 @@ export default {
       );
     }
   }
+
 };
 </script>
 
 <style lang="scss" scoped>
+.title{
+  color: antiquewhite;
+  text-align: center;
+}
+.container .alert{
+  text-align: center;
+  font-family: "Barlev";
+  letter-spacing: 1px;
 
-h3,h5{
-  color: white;
-  text-align: left;
+}
+h5{
+  color: black;
 }
 </style>
