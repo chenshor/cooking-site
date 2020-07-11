@@ -15,7 +15,7 @@
           <b-alert show variant="danger">
             <h2> You havn't seen any recipes yet !</h2>
             <hr>
-            <h5> Find your recipes and discover the magical of cooking </h5>
+            <h5> Find your recipes and discover the magic of cooking </h5>
           </b-alert>
         </b-col>
       </div>
