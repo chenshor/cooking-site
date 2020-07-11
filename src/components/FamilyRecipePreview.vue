@@ -11,7 +11,7 @@
       <b-card-text>
         <b-col>
           <b-row align-h="center">
-          <h4 class="headline">{{recipe.RecipeName}}</h4>
+          <h3 class="headline">{{recipe.RecipeName}}</h3>
           </b-row>
           <b-row align-h="center">
           <small>by {{ recipe.RecipeOwner }} </small>
@@ -46,7 +46,7 @@ export default {
 
 <style scoped>
 .card{
-  width: 365px;
+width: 365px;
   height: 500px;
   border-style:none;
   background-color: #fee6c2;
@@ -58,19 +58,23 @@ export default {
   object-fit: cover;
 }
 small{
-  color: black;
+    color: black;
   border: none;
   border-left: 1px solid rgb(179, 178, 178);
   padding-left: 10px;
   padding-right: 10px;
   height: 1.5em;
   bottom: 0;
+  font-family: sans-serif;
+  letter-spacing: 1px;
  
 }
-h4{
+h3{
   color: black;
   text-align: center;
   padding-bottom: 5px;
+  font-family: monospace;
+  font-weight: bold;
 }
 .recipePreviewFamily{
     text-decoration: none;

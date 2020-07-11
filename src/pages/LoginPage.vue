@@ -57,8 +57,10 @@
           show
         >Login failed: {{ form.submitError }}</b-alert>
       </b-card>
-      <h3 class="title2">Continue to discover the magical</h3>
-      <h3 class="title3">world of cooking</h3>
+      
+      <div>
+      <div class="title2">Continue to discover the magical world of cooking</div>
+      </div>
       <b-card-img
         id="imageC"
         src="https://res.cloudinary.com/di0zdzniy/image/upload/v1594129471/Cooking-Baking-Substitutes_fqcp04.jpg"
@@ -125,6 +127,10 @@ export default {
 };
 </script>
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fondamento&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script&family=Fondamento&display=swap");
+
+
 .loginContainer {
   width: 40%;
   left: -80%;
@@ -134,30 +140,36 @@ export default {
 }
 #imageC {
   width: 40%;
-  height: 50%;
+  height: 60%;
   position: absolute;
   top: 33%;
-  /* margin-top: 25%; */
-  left: 47%;
+  margin-top: 30px;
+  left: 53%;
 }
 
 .LItitle {
   color: rgb(219, 212, 212);
   margin-top: 15%;
   margin-left: 54%;
+  font-family: "Abraham";
+  letter-spacing: 1px;
 }
 
 .title2 {
   position: absolute;
   color: rgb(219, 212, 212);
   top: 20%;
-  left: 52%;
+  left: 48%;
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  font-size: 40px;
 }
 .title3 {
   position: absolute;
   color: rgb(219, 212, 212);
   top: 25%;
   left: 59%;
+  font-family: 'Fondamento', cursive;
 }
 
 #loginbtn {

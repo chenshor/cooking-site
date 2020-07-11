@@ -41,12 +41,10 @@ export default {
   methods: {
     async checkIndication() {
       try {
-        console.log(this.recipe);
         const id = this.recipe.id;
         const response = await this.axios.get(
           `https://ass3-2.herokuapp.com/users/recipeInfo/[${id}]`
         );
-        console.log(response.data.userRecipeInfo[0][id].favorite);
         this.isSeen = response.data.userRecipeInfo[0][id].watched;
         this.isFavorite = response.data.userRecipeInfo[0][id].favorite;
       } catch (error) {
@@ -57,7 +55,6 @@ export default {
     async addToFavorite(event) {
       try {
         const id = this.recipe.id;
-        console.log(id);
         const response = await this.axios.post(
           `https://ass3-2.herokuapp.com/users/recipeInfo/favorite/${id}`
         );

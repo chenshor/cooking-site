@@ -5,7 +5,13 @@
         <MyRecipePreview class="MyRecipePreview" :recipe="r" />
       </b-col>
     </b-row>
-    <div v-if="recipes.length === 0">You dont have any recipes yet!</div>
+    <div v-if="recipes.length === 0">
+        <b-alert show variant="danger">
+            <h1> You don't have recipes yet ?</h1>
+            <hr>
+            <h3> Write your recipes and share the magic with us </h3>
+          </b-alert>
+      </div>
   </b-container>
 </template>
 
@@ -47,5 +53,14 @@ export default {
 .container {
   width: 100%;
   height: 100%;
+}
+
+.container .alert{
+  text-align: center;
+  font-family: "Barlev";
+  letter-spacing: 1px;
+  width: 550px;
+  margin-left: 25%;
+
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <b-container class="containerSearch">
-    <h1 class="titleS">Search Recipes</h1>
+    <div class="title">Search Recipes</div>
 
     <b-row>
       <b-col>
@@ -158,7 +158,7 @@ export default {
       errors: [],
       isFound: undefined,
 
-      selected: "5", // Must be an array reference!
+      selected: "5",
       options: [
         { text: "5", value: "5" },
         { text: "10", value: "10" },
@@ -199,12 +199,21 @@ export default {
         if (localStorage.getItem("username")) {
           sessionStorage.removeItem("recipes");
           sessionStorage.recipes = JSON.stringify(this.recipes);
+          sessionStorage.search = this.search;
+          sessionStorage.cuisine = this.valueCuisine;
+          sessionStorage.diet = this.valueDiet;
+          sessionStorage.intolerance = this.valueIntolerance;
+
         }
       } catch (err) {
         this.isFound = false;
         this.recipes = [];
         if (localStorage.getItem("username"))
           sessionStorage.recipes = JSON.stringify(this.recipes);
+          sessionStorage.search = this.search;
+          sessionStorage.cuisine = this.valueCuisine;
+          sessionStorage.diet = this.valueDiet;
+          sessionStorage.intolerance = this.valueIntolerance;
       }
     },
     sortArrays(event) {
@@ -225,17 +234,33 @@ export default {
     this.cuisine.push(...cuisine);
     this.diet.push(...diet);
     this.intolerance.push(...intolerance);
-    if (sessionStorage.recipes) {
+    if (localStorage.getItem("username")) {
       this.recipes = JSON.parse(sessionStorage.getItem("recipes"));
+       this.search =  sessionStorage.search;
+       this.valueCuisine =  sessionStorage.cuisine;
+       this.valueDiet =  sessionStorage.diet;
+       this.valueIntolerance =  sessionStorage.intolerance;
+       
     }
   }
 };
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script&family=Fondamento&family=Montserrat:wght@100&family=Shadows+Into+Light&display=swap");
 .containerSearch {
   width: 100%;
   height: 100%;
+}
+.title{
+  color: whitesmoke;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 70px;
+ letter-spacing: 1px;
+
 }
 
 .containerSearch .formSearch {
@@ -267,5 +292,9 @@ export default {
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
+}
+.form-group .lable{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 </style>

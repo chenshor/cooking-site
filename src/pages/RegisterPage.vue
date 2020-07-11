@@ -293,14 +293,16 @@ export default {
 .title {
   position: relative;
   color: rgb(219, 212, 212);
-  top: 0%;
+  margin-top: 30px;
   left: 20%;
+  font-family: "Abraham";
+  letter-spacing: 1px;
 }
 
 #imgCard1 {
   width: 150%;
   height: 150%;
-  margin-top: 25%;
+  margin-top: 30%;
   margin-left: -60%;
 }
 

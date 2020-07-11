@@ -14,7 +14,7 @@
       <b-card-text id="data-content">
         <b-col>
           <b-row align-h="center">
-          <h4 class="headline">{{recipe.title}}</h4>
+          <h3 class="headline">{{recipe.title}}</h3>
           </b-row>
           <b-row align-h="center">
             <small  v-if="$root.store.username">
@@ -71,6 +71,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 .card{
   width: 365px;
   height: 500px;
@@ -91,12 +93,17 @@ small{
   padding-right: 10px;
   height: 1.5em;
   bottom: 0;
+  font-family: sans-serif;;
+  letter-spacing: 1px;
+  
  
 }
-h4{
+h3{
   color: black;
   text-align: center;
   padding-bottom: 5px;
+  font-family: monospace;
+  font-weight: bold;
 }
 .recipePreview{
     text-decoration: none;

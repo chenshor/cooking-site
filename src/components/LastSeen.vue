@@ -1,25 +1,25 @@
 <template>
   <b-container>
     <div class="title">
-    <h3>
+    
       {{ title }}:
-    </h3>
     </div>
-    <b-row>
+    <b-col md="3" offset-md="3">
       <div v-if="this.lastSeen">
-        <b-col v-for="r in recipes" :key="r.id">
+        <b-row v-for="r in recipes" :key="r.id">
           <RecipePreview class="recipePreview" :recipe="r" />
-        </b-col>
+        </b-row>
       </div>
       <div v-else>
         <b-col>
           <b-alert show variant="danger">
             <h2> You havn't seen any recipes yet !</h2>
+            <hr>
             <h5> Find your recipes and discover the magical of cooking </h5>
           </b-alert>
         </b-col>
       </div>
-    </b-row>
+    </b-col>
   </b-container>
 </template>
 
@@ -77,15 +77,22 @@ export default {
 <style lang="scss" scoped>
 .title{
   color: antiquewhite;
-  text-align: center;
+  text-align: right;
+ font-size: 40px;
+  font-family: "BlinkMacSystemFont";
+  letter-spacing: 1px;
 }
 .container .alert{
   text-align: center;
   font-family: "Barlev";
   letter-spacing: 1px;
+  width: 350px;
 
 }
 h5{
   color: black;
+}
+.container .recipePreview{
+  padding-bottom: 30px;
 }
 </style>

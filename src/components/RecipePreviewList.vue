@@ -1,17 +1,19 @@
 <template>
   <b-container>
     <div class="title">
-    <h3>
-       Explore these recipes:
-    </h3>
+    <div>
+       Explore new recipes:
+    </div>
     </div>
     <b-col>
-      <b-col v-for="r in recipes" :key="r.id">
+      <b-row v-for="r in recipes" :key="r.id">
         <RecipePreview class="recipePreview" :recipe="r" />
-      </b-col>
-      <b-col >
-        <b-button id="btnRandom" v-on:click="updateRecipes">Replace Recipes</b-button>
-      </b-col>
+      </b-row>
+      <b-row >
+        <b-button id="btnRandom" v-on:click="updateRecipes">
+          <b-icon-arrow-repeat></b-icon-arrow-repeat> Replace Recipes
+          </b-button>
+      </b-row>
     </b-col>
   </b-container>
 </template>
@@ -59,14 +61,20 @@ export default {
 
 <style lang="scss" scoped>
 
+
 .title{
   color: antiquewhite;
-  text-align: center;
+  text-align: left;
+  font-size: 40px;
+  font-family: "BlinkMacSystemFont";
 }
 #btnRandom{
   background-color: brown;
   margin-bottom: 30px;
-  margin-left: 30%;
+  margin-left: 20%;
+}
+.recipePreview{
+  padding-bottom: 30px;
 }
 
 

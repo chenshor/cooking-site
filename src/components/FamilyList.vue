@@ -5,7 +5,17 @@
         <FamilyRecipePreview class="familyPreview" :recipe="r" />
       </b-col>
     </b-row>
-    <div v-if="!isFound">You dont have any family recipes yet!</div>
+    <div v-if="!isFound">
+         <b-alert show variant="danger">
+            <h1> Get your first Family Recipe:</h1>
+            <hr>
+            <h3> 3 cups of forgiveness </h3>
+            <h3> 1 gallon of friendship </h3>
+            <h3> a pinch of hope </h3>
+            <h3> a spoonful of laughter </h3>
+            <h2> endless of -L-O-V-E- </h2>
+          </b-alert>
+    </div>
   </b-container>
 </template>
 
@@ -37,13 +47,17 @@ export default {
         const response = await this.axios.get(
           "https://ass3-2.herokuapp.com/users/FamilyRecipePreview"
         );
-        this.isFound = true;
-        console.log(response);
+        
         const recipes = response.data.userRecipeInfo;
 
         this.recipes = [];
         this.recipes.push(...recipes);
-        // console.log(this.recipes);
+        if(this.recipes.length > 0){
+          this.isFound = true;
+        }
+        else{
+          this.isFound = false;
+        }
       } catch (error) {
         this.isFound = false;
       }
@@ -56,4 +70,13 @@ export default {
 .container {
   min-height: 400px;
 }
+.container .alert{
+  text-align: center;
+  font-family: "Barlev";
+  letter-spacing: 1px;
+  width: 550px;
+  margin-left: 25%;
+
+}
+
 </style>

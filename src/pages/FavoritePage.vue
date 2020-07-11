@@ -16,10 +16,13 @@ export default {
 
 <style scop>
 .title {
-  color: whitesmoke;
+   color: whitesmoke;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 50px;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 70px;
+ letter-spacing: 1px;
 }
 
 </style>

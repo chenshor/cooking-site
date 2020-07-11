@@ -6,8 +6,10 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item to="/search">Search Recipes</b-nav-item>
-          <b-nav-item to="/about">About</b-nav-item>
+          <b-nav-item to="/search">
+          <b-icon-search></b-icon-search> Search Recipes</b-nav-item>
+          <b-nav-item to="/about">
+          <b-icon-info-circle></b-icon-info-circle> About</b-nav-item>
         </b-navbar-nav>
 
            <b-navbar-brand 
@@ -37,7 +39,9 @@
               <b-dropdown-item to="/myRecipes">My Recipes</b-dropdown-item>
               <b-dropdown-item to="/favorite">My Favorite</b-dropdown-item>
               <b-dropdown-item to="/FamilyList">Family Recipes</b-dropdown-item>
-              <b-dropdown-item @click="Logout">Log Out</b-dropdown-item>
+              <b-dropdown-item @click="Logout">
+                <b-icon-power></b-icon-power> Log Out
+                </b-dropdown-item>
             </b-nav-item-dropdown>
 
           </b-navbar-nav>

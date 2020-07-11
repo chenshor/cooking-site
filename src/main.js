@@ -2,9 +2,9 @@ import Vue from "vue";
 import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
-
 import routes from "./routes";
 import VueRouter from "vue-router";
+
 Vue.use(VueRouter);
 const router = new VueRouter({
   routes,
@@ -93,6 +93,11 @@ const shared_data = {
     console.log("logout");
     localStorage.removeItem("username");
     sessionStorage.removeItem("recipes");
+    sessionStorage.removeItem("search");
+    sessionStorage.removeItem("cuisine");
+    sessionStorage.removeItem("diet");
+    sessionStorage.removeItem("intolerance");
+   
     this.username = undefined;
   },
 };

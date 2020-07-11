@@ -12,7 +12,7 @@
       <b-card-text >
         <b-col>
           <b-row align-h="center">
-          <h4 class="headline">{{recipe.title}}</h4>
+          <h3 class="headline">{{recipe.title}}</h3>
           </b-row>
           <b-row align-h="center">
           <small>{{ recipe.readyInMinutes }} </small>
@@ -58,19 +58,23 @@ export default {
   object-fit: cover;
 }
 small{
-  color: black;
+    color: black;
   border: none;
   border-left: 1px solid rgb(179, 178, 178);
   padding-left: 10px;
   padding-right: 10px;
   height: 1.5em;
   bottom: 0;
+  font-family: sans-serif;
+  letter-spacing: 1px;
  
 }
-h4{
+h3{
   color: black;
   text-align: center;
   padding-bottom: 5px;
+  font-family: monospace;
+  font-weight: bold;
 }
 .recipePreview{
     text-decoration: none;

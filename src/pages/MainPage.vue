@@ -1,14 +1,14 @@
 <template>
     <b-container class="container">
       <div class="title">
-        <h1 >Let's Cook.. </h1>
+        <img width="1140" height="641" src="https://res.cloudinary.com/di0zdzniy/image/upload/v1594462456/mainFood_fp7mst.jpg" alt="Image"/>
         </div>
-      <b-row align-h="around" >
-        <b-col cols="4" >
+      <b-row align-h="between">
+        <b-col>
           <RecipePreviewList title="Randome Recipes" class="RandomRecipes " />  
         </b-col>
-        <b-col cols="4"  v-if="this.$root.store.username" >
-          <div >
+        <b-col >
+          <div v-if="this.$root.store.username" >
         <LastSeen
             title="Last Viewed Recipes"
             :class="{
@@ -17,20 +17,23 @@
             disabled
             ></LastSeen>
           </div>
-        </b-col>
-          <b-col cols="4"  v-if="!this.$root.store.username">
+          <div  v-if="!this.$root.store.username">
             <div class="titlenotSeen">
-              <h3>
+              <div>
                 Last Viewed Recipes:
-              </h3>
               </div>
+              </div>
+              <div class="alerts">
             <b-alert class="seenAlert" show variant="danger">
             <h5> You need to login to view your last recipes</h5>
+            <hr>
             <b-button id="btnLastSeen"
                 squared
                 to="/login"
               >LogIn</b-button>
           </b-alert>
+              </div>
+          </div>
 
           </b-col>
         
@@ -66,12 +69,24 @@ export default {
 }
 .title{
   color: whitesmoke;
+ 
+  max-width: 100%;
   
 }
+.title img{
+  height: 100%;
+    max-width: none;
+    object-fit: cover;
+    border: 0;
+    padding-top: 20px;
+
+}
+
 .container{
  height: 100%;
- margin-left: 30%;
- margin-right: 30%;
+ width: 100%;
+ margin: 0;
+
 }
 #btnLastSeen{
 background-color: brown;
@@ -81,15 +96,21 @@ background-color: brown;
  
 }
 .titlenotSeen{
-   color: antiquewhite;
+ color: antiquewhite;
   text-align: center;
+  font-size: 40px;
+  font-family: "BlinkMacSystemFont";
+  letter-spacing: 1px;
   margin: 20px;
   margin-bottom: 20%;
   
 }
 .seenAlert{
   width: 300px;
-   text-align: center;
-  
+  text-align: center;
+  font-family: "Barlev";
+  letter-spacing: 1px;
+  margin: 0 auto;
 }
+
 </style>
