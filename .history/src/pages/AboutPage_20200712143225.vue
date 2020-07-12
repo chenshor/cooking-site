@@ -10,7 +10,6 @@
           Third year as a Software And Information System Engineering student in Ben Gurion University.
           Her first site was about her grandmother, and you can find it in the following
           <a
-            class="link"
             href="https://sise-web-development-environments.github.io/313560484/"
           >link.</a>
         </div>
@@ -24,7 +23,6 @@
           Third year as a Software And Information System Engineering student in Ben Gurion University.
           Her first site was about her grandmother, and you can find it in the following
           <a
-            class="link"
             href="https://sise-web-development-environments.github.io/205682800/"
           >link.</a>
         </div>
@@ -38,7 +36,6 @@
       <br />We invite you to browse the site and find the recipes that are right for you.
       <br />In the last two years, we have teamed up on many joint projects, including our latest work, an online Pacman game, which you can find at the following
       <a
-        class="link"
         href="https://sise-web-development-environments.github.io/assignment2-313560484-205682800/"
       >link.</a>
     </div>
@@ -78,14 +75,12 @@ export default {
   display: inline-block;
   text-align: center;
   width: 120px;
-  margin-left: 20%;
 }
 .about2 {
   vertical-align: top;
   display: inline-block;
   text-align: center;
   width: 120px;
-  margin-left: 20%;
 }
 .aboutHead {
   margin-top: 5%;
@@ -103,8 +98,5 @@ export default {
   padding-top: 3%;
   text-align: center;
   color: #fff;
-}
-.link {
-  color: rgb(204, 135, 135);
 }
 </style>

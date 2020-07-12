@@ -1,5 +1,5 @@
 <template>
-  <b-container class="container">
+  <b-container class="container1">
     <div class="title">
       <img
         width="1140"
@@ -8,11 +8,11 @@
         alt="Image"
       />
     </div>
-    <b-row align-h="between">
-      <b-col>
+    <div class="rows">
+      <div class="columns">
         <RecipePreviewList title="Randome Recipes" class="RandomRecipes" />
-      </b-col>
-      <b-col>
+      </div>
+      <div class="columns">
         <div v-if="this.$root.store.username">
           <LastSeen
             title="Last Viewed Recipes"
@@ -34,8 +34,8 @@
             </b-alert>
           </div>
         </div>
-      </b-col>
-    </b-row>
+      </div>
+    </div>
   </b-container>
 </template>
 
@@ -73,7 +73,7 @@ export default {
   padding-top: 20px;
 }
 
-.container {
+.container1 {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -91,6 +91,7 @@ export default {
   font-family: "BlinkMacSystemFont";
   letter-spacing: 1px;
   margin: 20px;
+  margin-top: 7%;
   margin-bottom: 20%;
 }
 .seenAlert {
@@ -99,5 +100,16 @@ export default {
   font-family: "Barlev";
   letter-spacing: 1px;
   margin: 0 auto;
+}
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 </style>

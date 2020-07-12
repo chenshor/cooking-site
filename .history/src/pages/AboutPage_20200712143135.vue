@@ -1,34 +1,36 @@
 <template>
   <div class="containerAbout">
     <div align-h="around" class="aboutHead">
-      <b-col cols="2" class="about1">
-        <b-avatar class="avatarAbout" size="10rem">
-          <img src="https://res.cloudinary.com/di0zdzniy/image/upload/v1591349934/chen_lxtirf.jpg" />
-        </b-avatar>
-        <span class="aboutName">Chen Shoresh</span>
-        <div class="aboutUs">
-          Third year as a Software And Information System Engineering student in Ben Gurion University.
-          Her first site was about her grandmother, and you can find it in the following
-          <a
-            class="link"
-            href="https://sise-web-development-environments.github.io/313560484/"
-          >link.</a>
-        </div>
-      </b-col>
-      <b-col cols="2" class="about2">
-        <b-avatar class="avatarAbout" size="10rem">
-          <img src="https://res.cloudinary.com/di0zdzniy/image/upload/v1591349829/or_nvatkj.jpg" />
-        </b-avatar>
-        <span class="aboutName">Or Shoshani</span>
-        <div class="aboutUs">
-          Third year as a Software And Information System Engineering student in Ben Gurion University.
-          Her first site was about her grandmother, and you can find it in the following
-          <a
-            class="link"
-            href="https://sise-web-development-environments.github.io/205682800/"
-          >link.</a>
-        </div>
-      </b-col>
+      <b-row>
+        <b-col cols="2" class="about">
+          <b-avatar class="avatarAbout" size="10rem">
+            <img
+              src="https://res.cloudinary.com/di0zdzniy/image/upload/v1591349934/chen_lxtirf.jpg"
+            />
+          </b-avatar>
+          <span class="aboutName">Chen Shoresh</span>
+          <div class="aboutUs">
+            Third year as a Software And Information System Engineering student in Ben Gurion University.
+            Her first site was about her grandmother, and you can find it in the following
+            <a
+              href="https://sise-web-development-environments.github.io/313560484/"
+            >link.</a>
+          </div>
+        </b-col>
+        <b-col cols="2" class="about">
+          <b-avatar class="avatarAbout" size="10rem">
+            <img src="https://res.cloudinary.com/di0zdzniy/image/upload/v1591349829/or_nvatkj.jpg" />
+          </b-avatar>
+          <span class="aboutName">Or Shoshani</span>
+          <div class="aboutUs">
+            Third year as a Software And Information System Engineering student in Ben Gurion University.
+            Her first site was about her grandmother, and you can find it in the following
+            <a
+              href="https://sise-web-development-environments.github.io/205682800/"
+            >link.</a>
+          </div>
+        </b-col>
+      </b-row>
     </div>
     <div class="aboutSite">
       This site was established with love.
@@ -38,7 +40,6 @@
       <br />We invite you to browse the site and find the recipes that are right for you.
       <br />In the last two years, we have teamed up on many joint projects, including our latest work, an online Pacman game, which you can find at the following
       <a
-        class="link"
         href="https://sise-web-development-environments.github.io/assignment2-313560484-205682800/"
       >link.</a>
     </div>
@@ -73,19 +74,11 @@ export default {
   background: azure;
   margin-top: 5px;
 }
-.about1 {
+.about {
   vertical-align: top;
   display: inline-block;
   text-align: center;
   width: 120px;
-  margin-left: 20%;
-}
-.about2 {
-  vertical-align: top;
-  display: inline-block;
-  text-align: center;
-  width: 120px;
-  margin-left: 20%;
 }
 .aboutHead {
   margin-top: 5%;
@@ -103,8 +96,5 @@ export default {
   padding-top: 3%;
   text-align: center;
   color: #fff;
-}
-.link {
-  color: rgb(204, 135, 135);
 }
 </style>

@@ -8,7 +8,7 @@
         alt="Image"
       />
     </div>
-    <b-row align-h="between">
+    <b-row>
       <b-col>
         <RecipePreviewList title="Randome Recipes" class="RandomRecipes" />
       </b-col>

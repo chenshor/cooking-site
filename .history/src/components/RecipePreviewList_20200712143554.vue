@@ -1,5 +1,5 @@
 <template>
-  <b-container class="listPre">
+  <div class="listPre">
     <div class="title">
       <div>Explore new recipes:</div>
     </div>
@@ -13,7 +13,7 @@
         </b-button>
       </b-row>
     </b-col>
-  </b-container>
+  </div>
 </template>
 
 <script>

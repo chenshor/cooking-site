@@ -1,5 +1,5 @@
 <template>
-  <b-container class="container">
+  <b-container class="container1">
     <div class="title">
       <img
         width="1140"
@@ -73,7 +73,7 @@ export default {
   padding-top: 20px;
 }
 
-.container {
+.container1 {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -91,6 +91,7 @@ export default {
   font-family: "BlinkMacSystemFont";
   letter-spacing: 1px;
   margin: 20px;
+  margin-top: 10%;
   margin-bottom: 20%;
 }
 .seenAlert {

@@ -4,9 +4,9 @@
       <div>Explore new recipes:</div>
     </div>
     <b-col>
-      <b-row v-for="r in recipes" :key="r.id">
+      <div v-for="r in recipes" :key="r.id">
         <RecipePreview class="recipePreview" :recipe="r" />
-      </b-row>
+      </div>
       <b-row>
         <b-button id="btnRandom" v-on:click="updateRecipes">
           <b-icon-arrow-repeat></b-icon-arrow-repeat>Replace Recipes

@@ -1,5 +1,5 @@
 <template>
-  <b-container class="container">
+  <b-container class="container1">
     <div class="title">
       <img
         width="1140"
@@ -8,7 +8,7 @@
         alt="Image"
       />
     </div>
-    <b-row align-h="between">
+    <div align-h="between">
       <b-col>
         <RecipePreviewList title="Randome Recipes" class="RandomRecipes" />
       </b-col>
@@ -35,7 +35,7 @@
           </div>
         </div>
       </b-col>
-    </b-row>
+    </div>
   </b-container>
 </template>
 
@@ -73,7 +73,7 @@ export default {
   padding-top: 20px;
 }
 
-.container {
+.container1 {
   height: 100%;
   width: 100%;
   margin: 0;

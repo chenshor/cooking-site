@@ -20,9 +20,9 @@
             <small>by {{ recipe.RecipeOwner }}</small>
             <small>{{ recipe.servings }} services</small>
             <small>{{recipe.Prepared}}</small>
-            <small v-if="recipe.glutenFree=='true'">Gluten Free</small>
-            <small v-if="recipe.vegan=='true'">Vegan</small>
-            <small v-if="recipe.vegetarian=='true'">Vegetarian</small>
+            <small v-if="recipe.GlutenFree">Gluten Free</small>
+            <small v-if="recipe.Vegan">Vegan</small>
+            <small v-if="recipe.Vegetarian">Vegetarian</small>
           </b-row>
         </b-col>
       </b-card-text>
