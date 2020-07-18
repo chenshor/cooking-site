@@ -1,0 +1,1 @@
+DELETE FROM dbo.users WHERE username='orshosh'
