@@ -6,42 +6,20 @@
       <b-col>
         <b-form class="formSearch" @submit.prevent="searchRecipe">
           <b-form-group label="Search" label-for="search">
-            <b-form-input
-              id="search"
-              v-model="search"
-              placeholder="Search here.."
-            ></b-form-input>
+            <b-form-input id="search" v-model="search" placeholder="Search here.."></b-form-input>
           </b-form-group>
 
           <b-form-group label="Cuisine">
-            <b-form-tags
-              v-model="valueCuisine"
-              size="lg"
-              add-on-change
-              no-outer-focus
-              class="mb-2"
-            >
-              <template
-                v-slot="{
-                  tags,
-                  inputAttrs,
-                  inputHandlers,
-                  disabled,
-                  removeTag,
-                }"
-              >
-                <ul
-                  v-if="tags.length > 0"
-                  class="list-inline d-inline-block mb-2"
-                >
+            <b-form-tags v-model="valueCuisine" size="lg" add-on-change no-outer-focus class="mb-2">
+              <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+                <ul v-if="tags.length > 0" class="list-inline d-inline-block mb-2">
                   <li v-for="tag in tags" :key="tag" class="list-inline-item">
                     <b-form-tag
                       @remove="removeTag(tag)"
                       :title="tag"
                       :disabled="disabled"
                       variant="danger"
-                      >{{ tag }}</b-form-tag
-                    >
+                    >{{ tag }}</b-form-tag>
                   </li>
                 </ul>
                 <b-form-select
@@ -59,34 +37,16 @@
           </b-form-group>
 
           <b-form-group label="Diet">
-            <b-form-tags
-              v-model="valueDiet"
-              size="lg"
-              add-on-change
-              no-outer-focus
-              class="mb-2"
-            >
-              <template
-                v-slot="{
-                  tags,
-                  inputAttrs,
-                  inputHandlers,
-                  disabled,
-                  removeTag,
-                }"
-              >
-                <ul
-                  v-if="tags.length > 0"
-                  class="list-inline d-inline-block mb-2"
-                >
+            <b-form-tags v-model="valueDiet" size="lg" add-on-change no-outer-focus class="mb-2">
+              <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+                <ul v-if="tags.length > 0" class="list-inline d-inline-block mb-2">
                   <li v-for="tag in tags" :key="tag" class="list-inline-item">
                     <b-form-tag
                       @remove="removeTag(tag)"
                       :title="tag"
                       :disabled="disabled"
                       variant="danger"
-                      >{{ tag }}</b-form-tag
-                    >
+                    >{{ tag }}</b-form-tag>
                   </li>
                 </ul>
                 <b-form-select
@@ -111,27 +71,15 @@
               variant="danger"
               class="mb-2"
             >
-              <template
-                v-slot="{
-                  tags,
-                  inputAttrs,
-                  inputHandlers,
-                  disabled,
-                  removeTag,
-                }"
-              >
-                <ul
-                  v-if="tags.length > 0"
-                  class="list-inline d-inline-block mb-2"
-                >
+              <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+                <ul v-if="tags.length > 0" class="list-inline d-inline-block mb-2">
                   <li v-for="tag in tags" :key="tag" class="list-inline-item">
                     <b-form-tag
                       @remove="removeTag(tag)"
                       :title="tag"
                       :disabled="disabled"
                       variant="danger"
-                      >{{ tag }}</b-form-tag
-                    >
+                    >{{ tag }}</b-form-tag>
                   </li>
                 </ul>
                 <b-form-select
@@ -156,18 +104,12 @@
               name="numberOfResults"
             ></b-form-radio-group>
           </b-form-group>
-          <b-button
-            type="submit"
-            variant="danger"
-            style="width:250px;"
-            class="btnForm w-50"
-            >Search</b-button
-          >
+          <b-button type="submit" variant="danger" style="width:250px;" class="btnForm w-50">Search</b-button>
         </b-form>
 
         <b-row>
           <div v-if="isFound || recipes.length > 0" class="resultHead">
-            <h2>Found {{ recipes.length }} Recipes</h2>
+            <h2>Found {{recipes.length}} Recipes</h2>
             <b-form-group label="Sort By">
               <b-form-radio-group
                 v-model="sortSelect"
@@ -187,8 +129,8 @@
         </b-row>
       </b-col>
     </b-row>
-    <div v-if="(isFound === false) & (recipes.length === 0)">
-      <h2 class="noResult">Found {{ recipes.length }} Recipes</h2>
+    <div v-if="(isFound === false & recipes.length ===0)">
+      <h2 class="noResult">Found {{recipes.length}} Recipes</h2>
     </div>
   </b-container>
 </template>
@@ -202,7 +144,7 @@ import RecipePreview from "../components/RecipePreview";
 export default {
   name: "SearchPage",
   components: {
-    RecipePreview,
+    RecipePreview
   },
   data() {
     return {
@@ -220,39 +162,34 @@ export default {
       options: [
         { text: "5", value: "5" },
         { text: "10", value: "10" },
-        { text: "15", value: "15" },
+        { text: "15", value: "15" }
       ],
       recipes: [],
       sortSelect: "",
       sortOptions: [
         { text: "Time", value: "time" },
-        { text: "Likes", value: "likes" },
-      ],
+        { text: "Likes", value: "likes" }
+      ]
     };
   },
   methods: {
     async searchRecipe() {
       try {
-        let query = "";
-        if (this.search != undefined) {
-          query = this.search + " ";
-        }
+        let query = this.search;
         for (let i in this.valueCuisine) {
-          query = query.concat(this.valueCuisine[i]) + " ";
+          query = query.concat(" " + this.valueCuisine[i]);
         }
-        console.log(query);
         for (let i in this.valueDiet) {
-          query = query.concat(this.valueDiet[i]) + " ";
+          query = query.concat(" " + this.valueDiet[i]);
         }
         for (let i in this.valueIntolerance) {
-          query = query.concat(this.valueIntolerance[i]) + " ";
+          query = query.concat(" " + this.valueIntolerance[i]);
         }
-        query = query.substring(0, query.length - 1);
 
         let number = this.selected;
 
         let response = await this.axios.get(
-          `http://localhost:3000/recipes/search/query/${query}/amount/${number}`
+          `https://ass3-2.herokuapp.com/recipes/search/query/${query}/amount/${number}`
         );
 
         this.isFound = true;
@@ -262,10 +199,19 @@ export default {
         if (localStorage.getItem("username")) {
           sessionStorage.removeItem("recipes");
           sessionStorage.recipes = JSON.stringify(this.recipes);
-          sessionStorage.search = this.search;
-          sessionStorage.cuisine = this.valueCuisine;
-          sessionStorage.diet = this.valueDiet;
-          sessionStorage.intolerance = this.valueIntolerance;
+          if (this.search != "") {
+            sessionStorage.search = this.search;
+          }
+
+          if (this.valueCuisine.length > 0) {
+            sessionStorage.cuisine = this.valueCuisine;
+          }
+          if (this.valueDiet.length > 0) {
+            sessionStorage.diet = this.valueDiet;
+          }
+          if (this.valueIntolerance.length > 0) {
+            sessionStorage.intolerance = this.valueIntolerance;
+          }
         }
       } catch (err) {
         this.isFound = false;
@@ -289,7 +235,7 @@ export default {
           return a.aggregateLikes < b.aggregateLikes ? -1 : 1;
         });
       }
-    },
+    }
   },
 
   mounted() {
@@ -298,20 +244,12 @@ export default {
     this.intolerance.push(...intolerance);
     if (localStorage.getItem("username")) {
       this.recipes = JSON.parse(sessionStorage.getItem("recipes"));
-      if (sessionStorage.search !== "undefined") {
-        this.search = sessionStorage.search;
-      }
-      if (sessionStorage.cuisine !== "undefined") {
-        this.valueCuisine = sessionStorage.cuisine;
-      }
-      if (sessionStorage.diet !== "undefined") {
-        this.valueDiet = sessionStorage.diet;
-      }
-      if (sessionStorage.intolerance !== "undefined") {
-        this.valueIntolerance = sessionStorage.intolerance;
-      }
+      this.search = sessionStorage.search;
+      this.valueCuisine = sessionStorage.cuisine;
+      this.valueDiet = sessionStorage.diet;
+      this.valueIntolerance = sessionStorage.intolerance;
     }
-  },
+  }
 };
 </script>
 

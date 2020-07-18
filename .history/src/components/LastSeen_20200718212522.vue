@@ -48,7 +48,7 @@ export default {
         let username = localStorage.getItem("username");
         if (username) {
           const response = await this.axios.get(
-            "http://localhost:3000/users/lastSeen"
+            "https://ass3-2.herokuapp.com/users/lastSeen"
           );
 
           const recipes = response.data.lastSeen;

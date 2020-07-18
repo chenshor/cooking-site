@@ -93,7 +93,7 @@ const shared_data = {
     console.log("login", this.username);
   },
   logout() {
-    Vue.$cookies.remove("session");
+    Vue.$Cookies.removeItem("session");
     console.log("logout");
     localStorage.removeItem("username");
     sessionStorage.removeItem("recipes");

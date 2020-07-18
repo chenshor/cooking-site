@@ -55,6 +55,19 @@ import {
   AvatarPlugin,
 ].forEach((x) => Vue.use(x));
 
+router.beforeEach((to, from, next) => {
+  // if the user logged in and than the cookie expired thus the local storage contains username but there is no cookie
+  console.log("cookie" + Vue.$cookies.get("session"));
+  if (shared_data.username === undefined || !Vue.$cookies.get("session")) {
+    // logout force
+    shared_data.logout();
+    // redirect to home page
+    if (to.name !== "main") next({ name: "main" });
+    else next();
+  } else {
+    next();
+  }
+});
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
 axios.defaults.withCredentials = true;

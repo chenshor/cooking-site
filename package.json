@@ -15,6 +15,7 @@
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
     "vue-cli": "^2.9.6",
+    "vue-cookies": "^1.7.2",
     "vue-router": "^3.2.0",
     "vuelidate": "^0.7.5",
     "webpack": "^4.43.0"

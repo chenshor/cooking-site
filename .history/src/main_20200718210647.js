@@ -54,7 +54,6 @@ import {
   IconsPlugin,
   AvatarPlugin,
 ].forEach((x) => Vue.use(x));
-
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
 axios.defaults.withCredentials = true;
@@ -93,7 +92,6 @@ const shared_data = {
     console.log("login", this.username);
   },
   logout() {
-    Vue.$cookies.remove("session");
     console.log("logout");
     localStorage.removeItem("username");
     sessionStorage.removeItem("recipes");
@@ -101,10 +99,27 @@ const shared_data = {
     sessionStorage.removeItem("cuisine");
     sessionStorage.removeItem("diet");
     sessionStorage.removeItem("intolerance");
-
+   
     this.username = undefined;
   },
 };
+
+router.beforeEach((to, from, next) => {
+  // if there was a transition from logged in to session expired or localStorage was deleted
+  // if we try to enter auth required pages and we are not authorized
+  if (shared_data.username === undefined || !Vue.$cookies.get("session")) {
+    if (
+      (shared_data.username === undefined && Vue.$cookies.get("session")) ||
+      (shared_data.username !== undefined && !Vue.$cookies.get("session"))
+    ) {
+      shared_data.logout();
+    }
+    // if the route requires Authorization, (and we know the user is not authorized), we redirect to login page
+    if (to.matched.some((route) => route.meta.requiresAuth)) {
+      next({ name: "main" });
+    } else next();
+  } else next();
+});
 
 console.log(shared_data);
 // Vue.prototype.$root.store = shared_data;
