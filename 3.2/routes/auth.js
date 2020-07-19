@@ -42,6 +42,7 @@ router.post("/login", async (req, res, next) => {
     }
 
     req.session.user_id = user.user_id;
+
     res.status(200).send({ message: "login succeeded", success: true });
   } catch (error) {
     res
@@ -51,7 +52,7 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.post("/logout", function (req, res) {
-  req.session.reset();
+  req.session = null;
   res.status(204).send({ success: true, message: "logout succeeded" });
 });
 

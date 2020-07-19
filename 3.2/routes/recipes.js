@@ -25,7 +25,7 @@ router.get(
       recipesSearchModule.getOtherPerameter(req.query, search_params);
       let searchResults = await recipesSearchModule.searchRecipe(search_params);
       if (searchResults.length > 0) {
-        res.send({ data: searchResults });
+        res.status(200).send({ data: searchResults });
       } else {
         res.status(404).send({ message: "recipes not found", success: false });
       }
@@ -65,22 +65,13 @@ router.get("/ingredients/:id", async (req, res) => {
 });
 
 //////////////////////////////////// delete
-// router.get("/FamilyRecipePreview", async (req, res) => {
-//   try {
-//     const user = "chenshor";
-//     const userRecipeInfo = await dbModule.getPreviewFamilyRecipe(user);
-//     res.send({ userRecipeInfo });
-//   } catch (error) {
-//     res.status(404).send({ message: "ids not found", success: false });
-//   }
-// });
-
-router.get("/insert", async (req, res) => {
+router.get("/FamilyRecipePreview", async (req, res) => {
   try {
-    family.insertMyRecipe();
-    res.status(200);
+    const user = "chenshor";
+    const userRecipeInfo = await dbModule.getPreviewFamilyRecipe(user);
+    res.send({ userRecipeInfo });
   } catch (error) {
-    console.log("Catch an error: ", error);
+    res.status(404).send({ message: "ids not found", success: false });
   }
 });
 

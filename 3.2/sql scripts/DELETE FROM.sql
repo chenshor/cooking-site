@@ -1,1 +1,1 @@
-DELETE FROM dbo.users WHERE username='orshosh'
+DELETE FROM dbo.FamilyRecipes WHERE username='oo'

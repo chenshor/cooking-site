@@ -226,7 +226,9 @@ async function getFullRecipes(id) {
   recipes_id_list = [];
   recipes_id_list.push(id);
   let infoRecup = await getRecipesInfo(recipes_id_list);
+  console.log(infoRecup);
   let fullRecipe = await extractFullRecipeData(infoRecup);
+  
   return fullRecipe;
 }
 

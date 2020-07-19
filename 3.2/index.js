@@ -25,11 +25,15 @@ app.use(bodyParser.json());
 app.use(
   session({
     cookieName: "session",
-    secret: "100please",
-    duration: 20 * 60 * 1000,
-    // Expires: "Session",
+    secret: process.env.COOKIE_SECRET,
+    Expires: 20 * 60 * 1000,
     activeDuration: 20,
+    cookie:{
+      httpOnly: false,
+      ephemeral: false
+    }
   })
+  
 );
 
 app.get("/alive", (req, res) => {

@@ -1,0 +1,662 @@
+openapi: 3.0.0
+info:
+  title: ass 3.1
+  description: api for recipe website by 313560484, 205682800
+  contact:
+    email: chenshor@post.bgu.ac.il
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.1
+servers:
+- url: https://localhost:3000
+tags:
+- name: users
+  description: Operations about user
+- name: recipes
+  description: Everything about recipes
+- name: auth
+  description: all authentication related routes
+paths:
+  /login:
+    post:
+      tags:
+      - auth
+      summary: Logs user into the system
+      description: log in to the system with user name and password
+      operationId: loginUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/login'
+        required: true
+      responses:
+        "200":
+          description: you successfuly logged in to the system and recieved a cookie
+          headers:
+            Set-Cookie:
+              style: simple
+              explode: false
+              schema:
+                type: string
+                example: session=fj8fhsknd6784b4
+        "401":
+          description: wrong password / user name
+  /users/familyRecipe:
+    get:
+      tags:
+      - users
+      summary: ' Returns the family recipes'
+      description: Find  famaly recipes according to the user
+      operationId: getFamalyRecipes
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/recipePreview'
+        "404":
+          description: recipes not found
+      security:
+      - cookieAuth: []
+  /users/favoriteRecipes:
+    get:
+      tags:
+      - users
+      summary: ' Returns the favorite recipes'
+      description: Find  favorite recipes according to the user
+      operationId: getFavoriteRecipes
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/recipePreview'
+        "404":
+          description: recipes not found
+      security:
+      - cookieAuth: []
+  /recipes/search/query/{searchQuery}/amount/{number}:
+    get:
+      tags:
+      - recipes
+      summary: Find recipe according to the insert query from the spoonacular API
+      description: return recipes according to the query and request amount
+      operationId: searchRecipe
+      parameters:
+      - name: searchQuery
+        in: path
+        description: name of recipe to return
+        required: true
+        style: simple
+        explode: false
+        content:
+          application/json:
+            schema:
+              type: string
+      - name: number
+        in: path
+        description: number of recipes to return
+        required: true
+        style: simple
+        explode: false
+        content:
+          application/json:
+            schema:
+              type: integer
+              default: 5
+              enum:
+              - 5
+              - 10
+              - 15
+      - name: cuisine
+        in: query
+        description: The cuisin of recipe to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/cuisine'
+      - name: diet
+        in: query
+        description: The diet of recipe to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/diet'
+      - name: intolerance
+        in: query
+        description: The intolerance of recipe to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/intolerances'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/recipePreview'
+        "204":
+          description: No recipes found for the search params
+  /recipes/randomRecipes:
+    get:
+      tags:
+      - recipes
+      summary: return info about three random recipes
+      description: get info on recipes by their ids (random ids)
+      responses:
+        "200":
+          description: object with the recipe info for each id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/recipePreview'
+        "400":
+          description: invalid request
+  /recipes/fullRecipe/{id}:
+    get:
+      tags:
+      - recipes
+      summary: get the full info on a recipe
+      description: get the full info on the specific recipe
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          example: 12
+      responses:
+        "200":
+          description: object with the full recipe info for each id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+  /users/recipeInfo/favorite/{id}:
+    post:
+      tags:
+      - users
+      summary: Add a new  favoriterecipe to the user's page
+      description: add a new favorite recipe to the user's favorites
+      operationId: addFavoriteRecipe
+      parameters:
+      - name: id
+        in: path
+        description: id of the recipe
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: success
+      security:
+      - cookieAuth: []
+  /users/lastSeen:
+    get:
+      tags:
+      - users
+      summary: ' Returns the 3 last seen recipes'
+      description: returns the 3 last recipes of the user
+      operationId: getSeenRecipes
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/recipePreview'
+        "404":
+          description: recipe not found
+      security:
+      - cookieAuth: []
+  /users/myRecipePreview:
+    get:
+      tags:
+      - users
+      summary: ' Returns all my recipe in preview look'
+      description: returns all my recipes in preview look
+      operationId: MyRecipePrevie
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/recipePreview'
+        "404":
+          description: recipe not found
+      security:
+      - cookieAuth: []
+  /users/FamilyRecipePreview:
+    get:
+      tags:
+      - users
+      summary: ' Returns all family recipe in preview look'
+      description: returns all family recipes in preview look
+      operationId: familyRecipePrevie
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/recipePreview'
+        "404":
+          description: recipe not found
+      security:
+      - cookieAuth: []
+  /users/myRecipes:
+    get:
+      tags:
+      - users
+      summary: ' Returns the my recipes'
+      description: returns the user's recipes
+      operationId: getMyRecipes
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/recipePreview'
+        "404":
+          description: recipe not found
+      security:
+      - cookieAuth: []
+  /users/recipeInfo/seen/{id}:
+    post:
+      tags:
+      - users
+      summary: Add a new  seen recipe to the user's page
+      description: add a new seen recipe to the user's favorites
+      operationId: addSeenRecipe
+      parameters:
+      - name: id
+        in: path
+        description: id of the recipe
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: success
+      security:
+      - cookieAuth: []
+  /users/recipeInfo/{ids}:
+    get:
+      tags:
+      - users
+      summary: return view info
+      description: get info on recipes by their ids
+      parameters:
+      - name: ids
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: integer
+      responses:
+        "200":
+          description: object with the recipe info for each id
+          content:
+            application/json:
+              schema:
+                required:
+                - saved
+                - watched
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    watched:
+                      type: boolean
+                    saved:
+                      type: boolean
+                example:
+                  "12":
+                    watched: true
+                    saved: false
+        "401":
+          description: ids not found
+      security:
+      - cookieAuth: []
+  /users/logout:
+    get:
+      tags:
+      - auth
+      summary: Logs out current logged in user session
+      description: log out from the system
+      operationId: logoutUser
+      parameters: []
+      responses:
+        "204":
+          description: The session was deleted. The user is now logged out.
+          headers:
+            Set-Cookie:
+              style: simple
+              explode: false
+              schema:
+                type: string
+                example: session=deleted;; Expires=Thu, 01-Jan-1970 00:00:01 GMT;
+                  Path=/
+  /register:
+    post:
+      tags:
+      - auth
+      summary: add new user
+      description: Add a new user to the system
+      operationId: register
+      requestBody:
+        description: Inventory item to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "201":
+          description: you successfuly register to the system
+        "409":
+          description: user name already exists
+  /users/myRecipes/{id}:
+    get:
+      tags:
+      - users
+      summary: returns the the full recipe of one of the "my recipe"
+      operationId: getfullMyRecipe
+      parameters:
+      - name: id
+        in: path
+        description: the recipe id we want to see the full recipe
+        required: true
+        style: simple
+        explode: false
+        content:
+          application/json:
+            schema:
+              type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        "404":
+          description: recipe not found
+      security:
+      - cookieAuth: []
+  /users/familyRecipes/{id}:
+    get:
+      tags:
+      - users
+      summary: returns the the full recipe of one of the "family recipe"
+      operationId: getfullFamilyRecipe
+      parameters:
+      - name: id
+        in: path
+        description: the recipe id we want to see the full recipe
+        required: true
+        style: simple
+        explode: false
+        content:
+          application/json:
+            schema:
+              type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        "404":
+          description: recipe not found
+      security:
+      - cookieAuth: []
+  /recipes/ingredients/{id}:
+    get:
+      tags:
+      - recipes
+      summary: returns the recipe's ingredients
+      operationId: getIngredients
+      parameters:
+      - name: id
+        in: path
+        description: the recipe id we want to see the ingredients
+        required: true
+        style: simple
+        explode: false
+        content:
+          application/json:
+            schema:
+              type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ingredients'
+        "404":
+          description: recipe not found
+components:
+  schemas:
+    recipePreview:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 2
+        name:
+          type: string
+          example: apple pie
+        time:
+          type: string
+          format: time
+          example: 50 // minutes
+        image:
+          type: string
+          format: url
+        likes:
+          type: integer
+          example: 100
+        vegeterian:
+          type: boolean
+        vegan:
+          type: boolean
+        glutenFree:
+          type: boolean
+    Recipe:
+      type: object
+      properties:
+        Instructions:
+          type: string
+        numberOfDishes:
+          type: integer
+          example: 3
+        recipePreview:
+          $ref: '#/components/schemas/recipePreview'
+    login:
+      type: object
+      properties:
+        userName:
+          maxLength: 8
+          minLength: 3
+          type: string
+          description: the user name must contains only letters
+          example: orshosh
+        password:
+          maxLength: 10
+          minLength: 5
+          type: string
+          description: the passwords must contains letters with at least one numerical
+            character and one special character
+          example: or12345!
+    User:
+      type: object
+      properties:
+        FirstName:
+          type: string
+          example: chen
+        LastName:
+          type: string
+          example: shoresh
+        Country:
+          type: string
+          example: israel
+        password:
+          maxLength: 10
+          minLength: 5
+          type: string
+          description: the passwords must contains letters with at least one numerical
+            character and one special character
+          example: 12ddd!3
+        confirmedPassword:
+          maxLength: 10
+          minLength: 5
+          type: string
+          description: the passwords must contains letters with at least one numerical
+            character and one special character
+          example: xdd123
+        email:
+          type: string
+          example: chen@gmail.com
+        profileImage:
+          type: string
+          format: url
+          example: https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fpicture-of-the-day&psig=AOvVaw18Duud8cewfdh2ubbM_fwF&ust=1589386454171000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKCU_IncrukCFQAAAAAdAAAAABAD
+        userName:
+          maxLength: 8
+          minLength: 3
+          type: string
+          description: the user name must contains only letters
+          example: orshosh
+    ingredients:
+      type: object
+      properties:
+        name:
+          type: string
+          example: egg
+        amount:
+          $ref: '#/components/schemas/amount'
+        image:
+          type: string
+          format: url
+          example: https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fpicture-of-the-day&psig=AOvVaw18Duud8cewfdh2ubbM_fwF&ust=1589386454171000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKCU_IncrukCFQAAAAAdAAAAABAD
+    amount:
+      type: object
+      properties:
+        metric:
+          $ref: '#/components/schemas/metric'
+        us:
+          $ref: '#/components/schemas/us'
+    metric:
+      type: object
+      properties:
+        unit:
+          type: string
+          example: g
+        value:
+          type: integer
+          example: 3
+    us:
+      type: object
+      properties:
+        unit:
+          type: string
+          example: g
+        value:
+          type: integer
+          example: 3
+    cuisine:
+      type: string
+      enum:
+      - African
+      - American
+      - British
+      - Cajun
+      - Caribbean
+      - Chinese
+      - Eastern European
+      - European
+      - French
+      - German
+      - Greek
+      - Indian
+      - Irish
+      - Italian
+      - Japanese
+      - Jewish
+      - Korean
+      - Latin American
+      - Mediterranean
+      - Mexican
+      - Middle Eastern
+      - Nordic
+      - Southern
+      - Spanish
+      - Thai
+      - Vietnamese
+    diet:
+      type: string
+      enum:
+      - Gluten Free
+      - Ketogenic
+      - Vegetarian
+      - Lacto-Vegetarian
+      - Ovo-Vegetarian
+      - Vegan
+      - Pescetarian
+      - Paleo
+      - Primal
+      - Whole30
+    intolerances:
+      type: string
+      enum:
+      - Dairy
+      - Egg
+      - Gluten
+      - Grain
+      - Peanut
+      - Seafood
+      - Sesame
+      - Shellfish
+      - Soy
+      - Sulfite
+      - Tree Nut
+      - Wheat
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      name: session
+      in: cookie
