@@ -5,12 +5,7 @@ import axios from "axios";
 import routes from "./routes";
 import VueRouter from "vue-router";
 import VueCookies from "vue-cookies";
-Vue.use(VueCookies);
 
-Vue.use(VueRouter);
-const router = new VueRouter({
-  routes,
-});
 
 import Vuelidate from "vuelidate";
 import "hover.css";
@@ -57,6 +52,26 @@ import {
 
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
+Vue.use(VueCookies);
+
+Vue.use(VueRouter);
+const router = new VueRouter({
+  routes,
+});
+
+router.beforeEach((to, from, next) => {
+  console.log("cookie" + Vue.$cookies.get('session'));
+  if (shared_data.username !== undefined && !Vue.$cookies.get("session")){
+    shared_data.logout();
+    if (to.name!=='main')
+      next({ name: 'main' });
+    else
+      next();
+  } else {
+    next();
+  }
+  next();
+});
 axios.defaults.withCredentials = true;
 axios.interceptors.request.use(
   function(config) {
@@ -93,7 +108,6 @@ const shared_data = {
     console.log("login", this.username);
   },
   logout() {
-    Vue.$cookies.remove("session");
     console.log("logout");
     localStorage.removeItem("username");
     sessionStorage.removeItem("recipes");
@@ -103,6 +117,9 @@ const shared_data = {
     sessionStorage.removeItem("intolerance");
 
     this.username = undefined;
+    Vue.$cookies.remove('session');
+
+
   },
 };
 
